@@ -11,8 +11,6 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
-import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
-import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
 import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 
@@ -20,20 +18,10 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class TheorySyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected TheoryGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_Theory_AxiomsKeyword_4_2_0_q;
-	protected AbstractElementAlias match_Theory_OperatorsKeyword_4_1_0_q;
-	protected AbstractElementAlias match_Theory_RulesKeyword_4_4_0_q;
-	protected AbstractElementAlias match_Theory_TheoremsKeyword_4_3_0_q;
-	protected AbstractElementAlias match_Theory_TypesKeyword_4_0_0_q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (TheoryGrammarAccess) access;
-		match_Theory_AxiomsKeyword_4_2_0_q = new TokenAlias(false, true, grammarAccess.getTheoryAccess().getAxiomsKeyword_4_2_0());
-		match_Theory_OperatorsKeyword_4_1_0_q = new TokenAlias(false, true, grammarAccess.getTheoryAccess().getOperatorsKeyword_4_1_0());
-		match_Theory_RulesKeyword_4_4_0_q = new TokenAlias(false, true, grammarAccess.getTheoryAccess().getRulesKeyword_4_4_0());
-		match_Theory_TheoremsKeyword_4_3_0_q = new TokenAlias(false, true, grammarAccess.getTheoryAccess().getTheoremsKeyword_4_3_0());
-		match_Theory_TypesKeyword_4_0_0_q = new TokenAlias(false, true, grammarAccess.getTheoryAccess().getTypesKeyword_4_0_0());
 	}
 	
 	@Override
@@ -48,73 +36,8 @@ public class TheorySyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_Theory_AxiomsKeyword_4_2_0_q.equals(syntax))
-				emit_Theory_AxiomsKeyword_4_2_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Theory_OperatorsKeyword_4_1_0_q.equals(syntax))
-				emit_Theory_OperatorsKeyword_4_1_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Theory_RulesKeyword_4_4_0_q.equals(syntax))
-				emit_Theory_RulesKeyword_4_4_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Theory_TheoremsKeyword_4_3_0_q.equals(syntax))
-				emit_Theory_TheoremsKeyword_4_3_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Theory_TypesKeyword_4_0_0_q.equals(syntax))
-				emit_Theory_TypesKeyword_4_0_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else acceptNodes(getLastNavigableState(), syntaxNodes);
+			acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
-	/**
-	 * Ambiguous syntax:
-	 *     'axioms'?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     internalElements+=Axiom (ambiguity) internalElements+=Axiom
-	 */
-	protected void emit_Theory_AxiomsKeyword_4_2_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     'operators'?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     internalElements+=Operator (ambiguity) internalElements+=Operator
-	 */
-	protected void emit_Theory_OperatorsKeyword_4_1_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     'rules'?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     internalElements+=RuleBlock (ambiguity) internalElements+=RuleBlock
-	 */
-	protected void emit_Theory_RulesKeyword_4_4_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     'theorems'?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     internalElements+=Theorem (ambiguity) internalElements+=Theorem
-	 */
-	protected void emit_Theory_TheoremsKeyword_4_3_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     'types'?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     internalElements+=Type (ambiguity) internalElements+=Type
-	 */
-	protected void emit_Theory_TypesKeyword_4_0_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
 }

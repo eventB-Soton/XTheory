@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: ac.soton.xtheory.sc.ide
+Bundle-ManifestVersion: 2
+Bundle-Name: ac.soton.xtheory.sc.ide
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: ac.soton.xtheory.sc.ide; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: ac.soton.xtheory.sc,
+ ac.soton.xtheory.sc.emf.core,
+ org.eclipse.xtext.ide,
+ org.eclipse.xtext.xbase.ide
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

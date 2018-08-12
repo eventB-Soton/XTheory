@@ -7,22 +7,13 @@
 package theoryextension.impl;
 
 import java.util.Collection;
-
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.eventb.emf.core.impl.EventBNamedCommentedElementImpl;
-
+import org.eventb.emf.core.impl.EventBObjectImpl;
 import theoryextension.Rule;
 import theoryextension.RuleBlock;
 import theoryextension.TheoryextensionPackage;
@@ -35,23 +26,23 @@ import theoryextension.Variable;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link theoryextension.impl.RuleBlockImpl#getRule <em>Rule</em>}</li>
+ *   <li>{@link theoryextension.impl.RuleBlockImpl#getRules <em>Rules</em>}</li>
  *   <li>{@link theoryextension.impl.RuleBlockImpl#getVariables <em>Variables</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class RuleBlockImpl extends EventBNamedCommentedElementImpl implements RuleBlock {
+public class RuleBlockImpl extends EventBObjectImpl implements RuleBlock {
 	/**
-	 * The cached value of the '{@link #getRule() <em>Rule</em>}' containment reference.
+	 * The cached value of the '{@link #getRules() <em>Rules</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRule()
+	 * @see #getRules()
 	 * @generated
 	 * @ordered
 	 */
-	protected Rule rule;
+	protected EList<Rule> rules;
 
 	/**
 	 * The cached value of the '{@link #getVariables() <em>Variables</em>}' containment reference list.
@@ -87,65 +78,11 @@ public class RuleBlockImpl extends EventBNamedCommentedElementImpl implements Ru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Rule getRule() {
-		if (rule != null && rule.eIsProxy()) {
-			InternalEObject oldRule = (InternalEObject)rule;
-			rule = (Rule)eResolveProxy(oldRule);
-			if (rule != oldRule) {
-				InternalEObject newRule = (InternalEObject)rule;
-				NotificationChain msgs = oldRule.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TheoryextensionPackage.RULE_BLOCK__RULE, null, null);
-				if (newRule.eInternalContainer() == null) {
-					msgs = newRule.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TheoryextensionPackage.RULE_BLOCK__RULE, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TheoryextensionPackage.RULE_BLOCK__RULE, oldRule, rule));
-			}
+	public EList<Rule> getRules() {
+		if (rules == null) {
+			rules = new EObjectContainmentEList.Resolving<Rule>(Rule.class, this, TheoryextensionPackage.RULE_BLOCK__RULES);
 		}
-		return rule;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Rule basicGetRule() {
-		return rule;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetRule(Rule newRule, NotificationChain msgs) {
-		Rule oldRule = rule;
-		rule = newRule;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TheoryextensionPackage.RULE_BLOCK__RULE, oldRule, newRule);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setRule(Rule newRule) {
-		if (newRule != rule) {
-			NotificationChain msgs = null;
-			if (rule != null)
-				msgs = ((InternalEObject)rule).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TheoryextensionPackage.RULE_BLOCK__RULE, null, msgs);
-			if (newRule != null)
-				msgs = ((InternalEObject)newRule).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TheoryextensionPackage.RULE_BLOCK__RULE, null, msgs);
-			msgs = basicSetRule(newRule, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TheoryextensionPackage.RULE_BLOCK__RULE, newRule, newRule));
+		return rules;
 	}
 
 	/**
@@ -168,8 +105,8 @@ public class RuleBlockImpl extends EventBNamedCommentedElementImpl implements Ru
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case TheoryextensionPackage.RULE_BLOCK__RULE:
-				return basicSetRule(null, msgs);
+			case TheoryextensionPackage.RULE_BLOCK__RULES:
+				return ((InternalEList<?>)getRules()).basicRemove(otherEnd, msgs);
 			case TheoryextensionPackage.RULE_BLOCK__VARIABLES:
 				return ((InternalEList<?>)getVariables()).basicRemove(otherEnd, msgs);
 		}
@@ -184,9 +121,8 @@ public class RuleBlockImpl extends EventBNamedCommentedElementImpl implements Ru
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case TheoryextensionPackage.RULE_BLOCK__RULE:
-				if (resolve) return getRule();
-				return basicGetRule();
+			case TheoryextensionPackage.RULE_BLOCK__RULES:
+				return getRules();
 			case TheoryextensionPackage.RULE_BLOCK__VARIABLES:
 				return getVariables();
 		}
@@ -202,8 +138,9 @@ public class RuleBlockImpl extends EventBNamedCommentedElementImpl implements Ru
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case TheoryextensionPackage.RULE_BLOCK__RULE:
-				setRule((Rule)newValue);
+			case TheoryextensionPackage.RULE_BLOCK__RULES:
+				getRules().clear();
+				getRules().addAll((Collection<? extends Rule>)newValue);
 				return;
 			case TheoryextensionPackage.RULE_BLOCK__VARIABLES:
 				getVariables().clear();
@@ -221,8 +158,8 @@ public class RuleBlockImpl extends EventBNamedCommentedElementImpl implements Ru
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case TheoryextensionPackage.RULE_BLOCK__RULE:
-				setRule((Rule)null);
+			case TheoryextensionPackage.RULE_BLOCK__RULES:
+				getRules().clear();
 				return;
 			case TheoryextensionPackage.RULE_BLOCK__VARIABLES:
 				getVariables().clear();
@@ -239,8 +176,8 @@ public class RuleBlockImpl extends EventBNamedCommentedElementImpl implements Ru
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case TheoryextensionPackage.RULE_BLOCK__RULE:
-				return rule != null;
+			case TheoryextensionPackage.RULE_BLOCK__RULES:
+				return rules != null && !rules.isEmpty();
 			case TheoryextensionPackage.RULE_BLOCK__VARIABLES:
 				return variables != null && !variables.isEmpty();
 		}

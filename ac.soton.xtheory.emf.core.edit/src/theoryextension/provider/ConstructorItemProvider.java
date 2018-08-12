@@ -20,9 +20,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
-import org.eventb.emf.core.provider.EventBNamedCommentedElementItemProvider;
-
+import org.eventb.emf.core.provider.EventBNamedItemProvider;
 import theoryextension.Constructor;
 import theoryextension.TheoryextensionPackage;
 
@@ -33,7 +31,7 @@ import theoryextension.TheoryextensionPackage;
  * @generated
  */
 public class ConstructorItemProvider
-	extends EventBNamedCommentedElementItemProvider
+	extends EventBNamedItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,

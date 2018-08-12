@@ -97,7 +97,7 @@ class TheoryParsingTest {
 		val testInput = 
 		'''
 			theory thy
-				types List = nil
+				type List = nil
 			end
 		'''
 		val result = testInput.parse
@@ -115,8 +115,8 @@ class TheoryParsingTest {
 		val testInput = 
 		'''
 			theory thy
-				types List = nil
-					  Real = zero
+				type List = nil
+				type Real = zero
 			end
 		'''
 		val result = testInput.parse
@@ -134,7 +134,7 @@ class TheoryParsingTest {
 		val testInput = 
 		'''
 			theory thy
-				operators plus
+				op plus
 			end
 		'''
 		val result = testInput.parse
@@ -152,7 +152,8 @@ class TheoryParsingTest {
 		val testInput = 
 		'''
 			theory thy
-				operators plus minus
+				op plus
+				op minus
 			end
 		'''
 		val result = testInput.parse
@@ -170,8 +171,7 @@ class TheoryParsingTest {
 		val testInput = 
 		'''
 			theory thy
-				axioms
-					@axm0: "#x:NAT.x >= 0"
+				axm @axm0: "#x:NAT.x >= 0"
 			end
 		'''
 		val result = testInput.parse
@@ -189,9 +189,8 @@ class TheoryParsingTest {
 		val testInput = 
 		'''
 			theory thy
-				axioms
-					@axm0: "#x:NAT.x >= 0"
-					@axm1: "#y:NAT.-y <= 0"
+				axm @axm0: "#x:NAT.x >= 0"
+				axm @axm1: "#y:NAT.-y <= 0"
 			end
 		'''
 		val result = testInput.parse
@@ -209,8 +208,7 @@ class TheoryParsingTest {
 		val testInput = 
 		'''
 			theory thy
-				axioms
-					@thm0: "#x:NAT.x >= 0"
+				thm @thm0: "#x:NAT.x >= 0"
 			end
 		'''
 		val result = testInput.parse
@@ -228,9 +226,8 @@ class TheoryParsingTest {
 		val testInput = 
 		'''
 			theory thy
-				theorems
-					@thm0: "#x:NAT.x >= 0"
-					@thm1: "#y:NAT.-y <= 0"
+				thm @thm0: "#x:NAT.x >= 0"
+				thm @thm1: "#y:NAT.-y <= 0"
 			end
 		'''
 		val result = testInput.parse
@@ -248,8 +245,8 @@ class TheoryParsingTest {
 		val testInput = 
 		'''
 			theory thy
-				rules
-					@rule0: "TRUE" |- "TRUE"
+				ruleblock
+					rule @rule0: "TRUE" |- "TRUE"
 			end
 		'''
 		val result = testInput.parse
@@ -259,7 +256,7 @@ class TheoryParsingTest {
 		Assert.assertTrue(result instanceof Theory)
 		Assert.assertEquals("thy", result.name)
 		result.assertTheoryParameters()
-		result.assertTheoryInternalElements("rule0: TRUE |- TRUE")
+		result.assertTheoryRuleBlocks("rule0: TRUE |- TRUE;")
 	}
 	
 	@Test
@@ -267,9 +264,9 @@ class TheoryParsingTest {
 		val testInput = 
 		'''
 			theory thy
-				rules
-					@rule0: "TRUE" |- "TRUE"
-					@rule1: "FALSE" |- "FALSE"
+				ruleblock
+					rule @rule0: "TRUE" |- "TRUE"
+					rule @rule1: "FALSE" |- "FALSE"
 			end
 		'''
 		val result = testInput.parse
@@ -279,7 +276,7 @@ class TheoryParsingTest {
 		Assert.assertTrue(result instanceof Theory)
 		Assert.assertEquals("thy", result.name)
 		result.assertTheoryParameters()
-		result.assertTheoryInternalElements("rule0: TRUE |- TRUE", "rule1: FALSE |- FALSE")
+		result.assertTheoryRuleBlocks("rule0: TRUE |- TRUE;rule1: FALSE |- FALSE;")
 	}
 	
 	@Test
@@ -287,7 +284,7 @@ class TheoryParsingTest {
 		val testInput = 
 		'''
 			theory thy(T)
-				types List = nil | cons(head: "T", tail: "List(T)")
+				type List = nil | cons(head: "T", tail: "List(T)")
 			end
 		'''
 		val result = testInput.parse
@@ -305,7 +302,7 @@ class TheoryParsingTest {
 		val testInput = 
 		'''
 			theory thy
-				operators sqrt(x: "NAT")
+				op sqrt(x: "NAT")
 			end
 		'''
 		val result = testInput.parse
@@ -323,7 +320,7 @@ class TheoryParsingTest {
 		val testInput = 
 		'''
 			theory thy
-				operators plus(x: "NAT", y: "NAT")
+				op plus(x: "NAT", y: "NAT")
 			end
 		'''
 		val result = testInput.parse
@@ -341,7 +338,7 @@ class TheoryParsingTest {
 		val testInput = 
 		'''
 			theory thy
-				operators plus(x: "NAT", y: "NAT") : "NAT"
+				op plus(x: "NAT", y: "NAT") : "NAT"
 			end
 		'''
 		val result = testInput.parse
@@ -359,7 +356,7 @@ class TheoryParsingTest {
 		val testInput = 
 		'''
 			theory thy
-				operators sqrt prefix
+				op sqrt prefix
 			end
 		'''
 		val result = testInput.parse
@@ -377,7 +374,7 @@ class TheoryParsingTest {
 		val testInput = 
 		'''
 			theory thy
-				operators plus(x: "NAT", y:"NAT") infix
+				op plus(x: "NAT", y:"NAT") infix
 			end
 		'''
 		val result = testInput.parse
@@ -395,7 +392,7 @@ class TheoryParsingTest {
 		val testInput = 
 		'''
 			theory thy
-				operators trans(x: "NAT") postfix
+				op trans(x: "NAT") postfix
 			end
 		'''
 		val result = testInput.parse
@@ -413,7 +410,7 @@ class TheoryParsingTest {
 		val testInput = 
 		'''
 			theory thy
-				operators plus(x: "NAT", y:"NAT") associative
+				op plus(x: "NAT", y:"NAT") associative
 			end
 		'''
 		val result = testInput.parse
@@ -431,7 +428,7 @@ class TheoryParsingTest {
 		val testInput = 
 		'''
 			theory thy
-				operators plus(x: "NAT", y:"NAT") associative commutative
+				op plus(x: "NAT", y:"NAT") associative commutative
 			end
 		'''
 		val result = testInput.parse
@@ -449,7 +446,7 @@ class TheoryParsingTest {
 		val testInput = 
 		'''
 			theory thy
-				operators sqrt(x: "INT") for "x:NAT"
+				op sqrt(x: "INT") for "x:NAT"
 			end
 		'''
 		val result = testInput.parse
@@ -467,7 +464,7 @@ class TheoryParsingTest {
 		val testInput = 
 		'''
 			theory thy
-				operators plus(x: "NAT", y:"NAT") = "x+y" 
+				op plus(x: "NAT", y:"NAT") = "x+y" 
 			end
 		'''
 		val result = testInput.parse
@@ -485,7 +482,7 @@ class TheoryParsingTest {
 		val testInput = 
 		'''
 			theory thy
-				operators plus(x: "NAT", y:"NAT") = case x "INT" => "x+y" 
+				op plus(x: "NAT", y:"NAT") = case x "INT" => "x+y" 
 			end
 		'''
 		val result = testInput.parse
@@ -503,7 +500,7 @@ class TheoryParsingTest {
 		val testInput = 
 		'''
 			theory thy
-				operators listSize(l: "List(T)") prefix = case l
+				op listSize(l: "List(T)") prefix = case l
 					"nil" => "0" 
 					"cons(x, l0)" => "1+listSize(l0)"
 			end
@@ -523,7 +520,9 @@ class TheoryParsingTest {
 		val testInput = 
 		'''
 			theory thy
-				rules @rule0: variables x: "NAT" "TRUE" |- "TRUE"
+				ruleblock
+					variables x: "NAT"
+				    rule @rule0: "TRUE" |- "TRUE"
 			end
 		'''
 		val result = testInput.parse
@@ -533,7 +532,7 @@ class TheoryParsingTest {
 		Assert.assertTrue(result instanceof Theory)
 		Assert.assertEquals("thy", result.name)
 		result.assertTheoryParameters()
-		result.assertTheoryInternalElements("rule0: x: NAT TRUE |- TRUE")
+		result.assertTheoryRuleBlocks("x: NAT rule0: TRUE |- TRUE;")
 	}
 	
 	@Test
@@ -541,7 +540,9 @@ class TheoryParsingTest {
 		val testInput = 
 		'''
 			theory thy
-				rules @rule0: variables x: "NAT" y: "NAT" "TRUE" |- "TRUE"
+				ruleblock
+					variables x: "NAT" y: "NAT"
+					rule @rule0: "TRUE" |- "TRUE"
 			end
 		'''
 		val result = testInput.parse
@@ -551,7 +552,7 @@ class TheoryParsingTest {
 		Assert.assertTrue(result instanceof Theory)
 		Assert.assertEquals("thy", result.name)
 		result.assertTheoryParameters()
-		result.assertTheoryInternalElements("rule0: x: NAT y: NAT TRUE |- TRUE")
+		result.assertTheoryRuleBlocks("x: NAT y: NAT rule0: TRUE |- TRUE;")
 	}
 	
 	@Test
@@ -559,7 +560,8 @@ class TheoryParsingTest {
 		val testInput = 
 		'''
 			theory thy
-				rules @rule0: "TRUE" "FALSE" |- "FALSE"
+				ruleblock
+					rule @rule0: "TRUE" "FALSE" |- "FALSE"
 			end
 		'''
 		val result = testInput.parse
@@ -569,7 +571,7 @@ class TheoryParsingTest {
 		Assert.assertTrue(result instanceof Theory)
 		Assert.assertEquals("thy", result.name)
 		result.assertTheoryParameters()
-		result.assertTheoryInternalElements("rule0: TRUE FALSE |- FALSE")
+		result.assertTheoryRuleBlocks("rule0: TRUE FALSE |- FALSE;")
 	}
 	
 	@Test
@@ -577,7 +579,8 @@ class TheoryParsingTest {
 		val testInput = 
 		'''
 			theory thy
-				rules @rule0: "TRUE" required "FALSE" |- "FALSE"
+				ruleblock
+					rule @rule0: "TRUE" required "FALSE" |- "FALSE"
 			end
 		'''
 		val result = testInput.parse
@@ -587,7 +590,7 @@ class TheoryParsingTest {
 		Assert.assertTrue(result instanceof Theory)
 		Assert.assertEquals("thy", result.name)
 		result.assertTheoryParameters()
-		result.assertTheoryInternalElements("rule0: TRUE required FALSE |- FALSE")
+		result.assertTheoryRuleBlocks("rule0: TRUE required FALSE |- FALSE;")
 	}
 	
 	@Test
@@ -595,9 +598,9 @@ class TheoryParsingTest {
 		val testInput = 
 		'''
 			theory thy
-				rules @CardNatRange:
+				ruleblock
 					variables i: "INT" j:"INT"
-					"card(i..j)" == "j-i+1"
+					rule @CardNatRange: "card(i..j)" == "j-i+1"
 			end
 		'''
 		val result = testInput.parse
@@ -607,7 +610,7 @@ class TheoryParsingTest {
 		Assert.assertTrue(result instanceof Theory)
 		Assert.assertEquals("thy", result.name)
 		result.assertTheoryParameters()
-		result.assertTheoryInternalElements("CardNatRange: i: INT j: INT card(i..j) == j-i+1")
+		result.assertTheoryRuleBlocks("i: INT j: INT CardNatRange: card(i..j) == j-i+1;")
 	}
 	
 	@Test
@@ -615,10 +618,10 @@ class TheoryParsingTest {
 		val testInput = 
 		'''
 			theory thy
-				rules @CardIntRange:
+				ruleblock
 					variables i: "INT" j:"INT"
-					"card(i..j)" == "i<=j" => "j-i+1"
-									"i>j" => "0"
+					rule @CardIntRange: "card(i..j)" == "i<=j" => "j-i+1"
+												   		"i>j" => "0"
 			end
 		'''
 		val result = testInput.parse
@@ -628,6 +631,6 @@ class TheoryParsingTest {
 		Assert.assertTrue(result instanceof Theory)
 		Assert.assertEquals("thy", result.name)
 		result.assertTheoryParameters()
-		result.assertTheoryInternalElements("CardIntRange: i: INT j: INT card(i..j) == i<=j => j-i+1 i>j => 0")
+		result.assertTheoryRuleBlocks("i: INT j: INT CardIntRange: card(i..j) == i<=j => j-i+1 i>j => 0;")
 	}
 }

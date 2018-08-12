@@ -27,16 +27,10 @@ import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBNamed;
 import org.eventb.emf.core.EventBObject;
 import org.eventb.emf.core.impl.EventBNamedImpl;
-
-import theoryextension.Axiom;
-import theoryextension.Operator;
 import theoryextension.Parameter;
-import theoryextension.Rule;
-import theoryextension.Theorem;
+import theoryextension.RuleBlock;
 import theoryextension.Theory;
 import theoryextension.TheoryextensionPackage;
-import theoryextension.Type;
-import theoryextension.Variable;
 
 /**
  * <!-- begin-user-doc -->
@@ -48,12 +42,7 @@ import theoryextension.Variable;
  *   <li>{@link theoryextension.impl.TheoryImpl#getAnnotations <em>Annotations</em>}</li>
  *   <li>{@link theoryextension.impl.TheoryImpl#getImports <em>Imports</em>}</li>
  *   <li>{@link theoryextension.impl.TheoryImpl#getParameters <em>Parameters</em>}</li>
- *   <li>{@link theoryextension.impl.TheoryImpl#getOperators <em>Operators</em>}</li>
- *   <li>{@link theoryextension.impl.TheoryImpl#getTypes <em>Types</em>}</li>
- *   <li>{@link theoryextension.impl.TheoryImpl#getAxioms <em>Axioms</em>}</li>
- *   <li>{@link theoryextension.impl.TheoryImpl#getTheorems <em>Theorems</em>}</li>
- *   <li>{@link theoryextension.impl.TheoryImpl#getRules <em>Rules</em>}</li>
- *   <li>{@link theoryextension.impl.TheoryImpl#getVariables <em>Variables</em>}</li>
+ *   <li>{@link theoryextension.impl.TheoryImpl#getRuleBlocks <em>Rule Blocks</em>}</li>
  *   <li>{@link theoryextension.impl.TheoryImpl#getInternalElements <em>Internal Elements</em>}</li>
  * </ul>
  * </p>
@@ -92,64 +81,14 @@ public class TheoryImpl extends EventBNamedImpl implements Theory {
 	protected EList<Parameter> parameters;
 
 	/**
-	 * The cached value of the '{@link #getOperators() <em>Operators</em>}' containment reference list.
+	 * The cached value of the '{@link #getRuleBlocks() <em>Rule Blocks</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOperators()
+	 * @see #getRuleBlocks()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Operator> operators;
-
-	/**
-	 * The cached value of the '{@link #getTypes() <em>Types</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTypes()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Type> types;
-
-	/**
-	 * The cached value of the '{@link #getAxioms() <em>Axioms</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAxioms()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Axiom> axioms;
-
-	/**
-	 * The cached value of the '{@link #getTheorems() <em>Theorems</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTheorems()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Theorem> theorems;
-
-	/**
-	 * The cached value of the '{@link #getRules() <em>Rules</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRules()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Rule> rules;
-
-	/**
-	 * The cached value of the '{@link #getVariables() <em>Variables</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getVariables()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Variable> variables;
+	protected EList<RuleBlock> ruleBlocks;
 
 	/**
 	 * The cached value of the '{@link #getInternalElements() <em>Internal Elements</em>}' containment reference list.
@@ -221,71 +160,11 @@ public class TheoryImpl extends EventBNamedImpl implements Theory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Operator> getOperators() {
-		if (operators == null) {
-			operators = new EObjectContainmentEList.Resolving<Operator>(Operator.class, this, TheoryextensionPackage.THEORY__OPERATORS);
+	public EList<RuleBlock> getRuleBlocks() {
+		if (ruleBlocks == null) {
+			ruleBlocks = new EObjectContainmentEList.Resolving<RuleBlock>(RuleBlock.class, this, TheoryextensionPackage.THEORY__RULE_BLOCKS);
 		}
-		return operators;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Type> getTypes() {
-		if (types == null) {
-			types = new EObjectContainmentEList.Resolving<Type>(Type.class, this, TheoryextensionPackage.THEORY__TYPES);
-		}
-		return types;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Axiom> getAxioms() {
-		if (axioms == null) {
-			axioms = new EObjectContainmentEList.Resolving<Axiom>(Axiom.class, this, TheoryextensionPackage.THEORY__AXIOMS);
-		}
-		return axioms;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Theorem> getTheorems() {
-		if (theorems == null) {
-			theorems = new EObjectContainmentEList.Resolving<Theorem>(Theorem.class, this, TheoryextensionPackage.THEORY__THEOREMS);
-		}
-		return theorems;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Rule> getRules() {
-		if (rules == null) {
-			rules = new EObjectContainmentEList.Resolving<Rule>(Rule.class, this, TheoryextensionPackage.THEORY__RULES);
-		}
-		return rules;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Variable> getVariables() {
-		if (variables == null) {
-			variables = new EObjectContainmentEList.Resolving<Variable>(Variable.class, this, TheoryextensionPackage.THEORY__VARIABLES);
-		}
-		return variables;
+		return ruleBlocks;
 	}
 
 	/**
@@ -367,18 +246,8 @@ public class TheoryImpl extends EventBNamedImpl implements Theory {
 				return ((InternalEList<?>)getAnnotations()).basicRemove(otherEnd, msgs);
 			case TheoryextensionPackage.THEORY__PARAMETERS:
 				return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
-			case TheoryextensionPackage.THEORY__OPERATORS:
-				return ((InternalEList<?>)getOperators()).basicRemove(otherEnd, msgs);
-			case TheoryextensionPackage.THEORY__TYPES:
-				return ((InternalEList<?>)getTypes()).basicRemove(otherEnd, msgs);
-			case TheoryextensionPackage.THEORY__AXIOMS:
-				return ((InternalEList<?>)getAxioms()).basicRemove(otherEnd, msgs);
-			case TheoryextensionPackage.THEORY__THEOREMS:
-				return ((InternalEList<?>)getTheorems()).basicRemove(otherEnd, msgs);
-			case TheoryextensionPackage.THEORY__RULES:
-				return ((InternalEList<?>)getRules()).basicRemove(otherEnd, msgs);
-			case TheoryextensionPackage.THEORY__VARIABLES:
-				return ((InternalEList<?>)getVariables()).basicRemove(otherEnd, msgs);
+			case TheoryextensionPackage.THEORY__RULE_BLOCKS:
+				return ((InternalEList<?>)getRuleBlocks()).basicRemove(otherEnd, msgs);
 			case TheoryextensionPackage.THEORY__INTERNAL_ELEMENTS:
 				return ((InternalEList<?>)getInternalElements()).basicRemove(otherEnd, msgs);
 		}
@@ -399,18 +268,8 @@ public class TheoryImpl extends EventBNamedImpl implements Theory {
 				return getImports();
 			case TheoryextensionPackage.THEORY__PARAMETERS:
 				return getParameters();
-			case TheoryextensionPackage.THEORY__OPERATORS:
-				return getOperators();
-			case TheoryextensionPackage.THEORY__TYPES:
-				return getTypes();
-			case TheoryextensionPackage.THEORY__AXIOMS:
-				return getAxioms();
-			case TheoryextensionPackage.THEORY__THEOREMS:
-				return getTheorems();
-			case TheoryextensionPackage.THEORY__RULES:
-				return getRules();
-			case TheoryextensionPackage.THEORY__VARIABLES:
-				return getVariables();
+			case TheoryextensionPackage.THEORY__RULE_BLOCKS:
+				return getRuleBlocks();
 			case TheoryextensionPackage.THEORY__INTERNAL_ELEMENTS:
 				return getInternalElements();
 		}
@@ -438,29 +297,9 @@ public class TheoryImpl extends EventBNamedImpl implements Theory {
 				getParameters().clear();
 				getParameters().addAll((Collection<? extends Parameter>)newValue);
 				return;
-			case TheoryextensionPackage.THEORY__OPERATORS:
-				getOperators().clear();
-				getOperators().addAll((Collection<? extends Operator>)newValue);
-				return;
-			case TheoryextensionPackage.THEORY__TYPES:
-				getTypes().clear();
-				getTypes().addAll((Collection<? extends Type>)newValue);
-				return;
-			case TheoryextensionPackage.THEORY__AXIOMS:
-				getAxioms().clear();
-				getAxioms().addAll((Collection<? extends Axiom>)newValue);
-				return;
-			case TheoryextensionPackage.THEORY__THEOREMS:
-				getTheorems().clear();
-				getTheorems().addAll((Collection<? extends Theorem>)newValue);
-				return;
-			case TheoryextensionPackage.THEORY__RULES:
-				getRules().clear();
-				getRules().addAll((Collection<? extends Rule>)newValue);
-				return;
-			case TheoryextensionPackage.THEORY__VARIABLES:
-				getVariables().clear();
-				getVariables().addAll((Collection<? extends Variable>)newValue);
+			case TheoryextensionPackage.THEORY__RULE_BLOCKS:
+				getRuleBlocks().clear();
+				getRuleBlocks().addAll((Collection<? extends RuleBlock>)newValue);
 				return;
 			case TheoryextensionPackage.THEORY__INTERNAL_ELEMENTS:
 				getInternalElements().clear();
@@ -487,23 +326,8 @@ public class TheoryImpl extends EventBNamedImpl implements Theory {
 			case TheoryextensionPackage.THEORY__PARAMETERS:
 				getParameters().clear();
 				return;
-			case TheoryextensionPackage.THEORY__OPERATORS:
-				getOperators().clear();
-				return;
-			case TheoryextensionPackage.THEORY__TYPES:
-				getTypes().clear();
-				return;
-			case TheoryextensionPackage.THEORY__AXIOMS:
-				getAxioms().clear();
-				return;
-			case TheoryextensionPackage.THEORY__THEOREMS:
-				getTheorems().clear();
-				return;
-			case TheoryextensionPackage.THEORY__RULES:
-				getRules().clear();
-				return;
-			case TheoryextensionPackage.THEORY__VARIABLES:
-				getVariables().clear();
+			case TheoryextensionPackage.THEORY__RULE_BLOCKS:
+				getRuleBlocks().clear();
 				return;
 			case TheoryextensionPackage.THEORY__INTERNAL_ELEMENTS:
 				getInternalElements().clear();
@@ -526,18 +350,8 @@ public class TheoryImpl extends EventBNamedImpl implements Theory {
 				return imports != null && !imports.isEmpty();
 			case TheoryextensionPackage.THEORY__PARAMETERS:
 				return parameters != null && !parameters.isEmpty();
-			case TheoryextensionPackage.THEORY__OPERATORS:
-				return operators != null && !operators.isEmpty();
-			case TheoryextensionPackage.THEORY__TYPES:
-				return types != null && !types.isEmpty();
-			case TheoryextensionPackage.THEORY__AXIOMS:
-				return axioms != null && !axioms.isEmpty();
-			case TheoryextensionPackage.THEORY__THEOREMS:
-				return theorems != null && !theorems.isEmpty();
-			case TheoryextensionPackage.THEORY__RULES:
-				return rules != null && !rules.isEmpty();
-			case TheoryextensionPackage.THEORY__VARIABLES:
-				return variables != null && !variables.isEmpty();
+			case TheoryextensionPackage.THEORY__RULE_BLOCKS:
+				return ruleBlocks != null && !ruleBlocks.isEmpty();
 			case TheoryextensionPackage.THEORY__INTERNAL_ELEMENTS:
 				return internalElements != null && !internalElements.isEmpty();
 		}

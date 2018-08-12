@@ -38,7 +38,7 @@ class TheoryValidator extends AbstractTheoryValidator {
 		if (thyName != thy.name)
 			error('Theory name should be the same as the file name', null)
 	}
-	/*
+	
 	// Check the name of the theory parameters as they must be distinct one another
 	@Check
 	def checkTheoryParametersName(Theory thy){
@@ -51,8 +51,8 @@ class TheoryValidator extends AbstractTheoryValidator {
 				//if none, all the file is underlined. Here we only have the theory name underlined
 			}
 		}
-	}*/
-	
+	}
+
 	// Check the names of internal elements of a theory are distinct
 	@Check
 	def checkInternalElementsName(Theory thy) {
@@ -67,6 +67,23 @@ class TheoryValidator extends AbstractTheoryValidator {
 		}
 	}
 	
+	// Check the names of internal elements of a theory are distinct
+	@Check
+	def checkRuleInternalElementsName(Theory thy) {
+		var i=0
+		for(; i<thy.internalElements.size() ; i++){
+			var j=0
+			for(; j<thy.ruleBlocks.size() ; j++){
+				var k=0
+				for(; k<thy.ruleBlocks.get(j).rules.size() ; k++){
+					if (thy.internalElements.get(i).name == thy.ruleBlocks.get(j).rules.get(k).name)
+						error("Internal elements' and rules' names should be distinct", thy.internalElements.get(i).eClass().getEAllStructuralFeatures().get(0))
+						//if none, all the file is underlined. Here we only have the theory name underlined
+				}
+			}
+		}
+	}
+
 	// Check the name of a constructor and of its destructor are distinct
 	@Check
 	def checkDestructorName(Constructor cons){

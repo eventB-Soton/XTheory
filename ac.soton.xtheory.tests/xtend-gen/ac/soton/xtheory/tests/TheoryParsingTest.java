@@ -127,7 +127,7 @@ public class TheoryParsingTest {
       _builder.append("theory thy");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("types List = nil");
+      _builder.append("type List = nil");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -152,10 +152,10 @@ public class TheoryParsingTest {
       _builder.append("theory thy");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("types List = nil");
+      _builder.append("type List = nil");
       _builder.newLine();
-      _builder.append("\t\t  ");
-      _builder.append("Real = zero");
+      _builder.append("\t");
+      _builder.append("type Real = zero");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -180,7 +180,7 @@ public class TheoryParsingTest {
       _builder.append("theory thy");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("operators plus");
+      _builder.append("op plus");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -205,7 +205,10 @@ public class TheoryParsingTest {
       _builder.append("theory thy");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("operators plus minus");
+      _builder.append("op plus");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("op minus");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -230,10 +233,7 @@ public class TheoryParsingTest {
       _builder.append("theory thy");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("axioms");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("@axm0: \"#x:NAT.x >= 0\"");
+      _builder.append("axm @axm0: \"#x:NAT.x >= 0\"");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -258,13 +258,10 @@ public class TheoryParsingTest {
       _builder.append("theory thy");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("axioms");
+      _builder.append("axm @axm0: \"#x:NAT.x >= 0\"");
       _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("@axm0: \"#x:NAT.x >= 0\"");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("@axm1: \"#y:NAT.-y <= 0\"");
+      _builder.append("\t");
+      _builder.append("axm @axm1: \"#y:NAT.-y <= 0\"");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -289,10 +286,7 @@ public class TheoryParsingTest {
       _builder.append("theory thy");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("axioms");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("@thm0: \"#x:NAT.x >= 0\"");
+      _builder.append("thm @thm0: \"#x:NAT.x >= 0\"");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -317,13 +311,10 @@ public class TheoryParsingTest {
       _builder.append("theory thy");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("theorems");
+      _builder.append("thm @thm0: \"#x:NAT.x >= 0\"");
       _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("@thm0: \"#x:NAT.x >= 0\"");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("@thm1: \"#y:NAT.-y <= 0\"");
+      _builder.append("\t");
+      _builder.append("thm @thm1: \"#y:NAT.-y <= 0\"");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -348,10 +339,10 @@ public class TheoryParsingTest {
       _builder.append("theory thy");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("rules");
+      _builder.append("ruleblock");
       _builder.newLine();
       _builder.append("\t\t");
-      _builder.append("@rule0: \"TRUE\" |- \"TRUE\"");
+      _builder.append("rule @rule0: \"TRUE\" |- \"TRUE\"");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -363,7 +354,7 @@ public class TheoryParsingTest {
       Assert.assertTrue((result instanceof Theory));
       Assert.assertEquals("thy", result.getName());
       this._assertTheoryExtension.assertTheoryParameters(result);
-      this._assertTheoryExtension.assertTheoryInternalElements(result, "rule0: TRUE |- TRUE");
+      this._assertTheoryExtension.assertTheoryRuleBlocks(result, "rule0: TRUE |- TRUE;");
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -376,13 +367,13 @@ public class TheoryParsingTest {
       _builder.append("theory thy");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("rules");
+      _builder.append("ruleblock");
       _builder.newLine();
       _builder.append("\t\t");
-      _builder.append("@rule0: \"TRUE\" |- \"TRUE\"");
+      _builder.append("rule @rule0: \"TRUE\" |- \"TRUE\"");
       _builder.newLine();
       _builder.append("\t\t");
-      _builder.append("@rule1: \"FALSE\" |- \"FALSE\"");
+      _builder.append("rule @rule1: \"FALSE\" |- \"FALSE\"");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -394,7 +385,7 @@ public class TheoryParsingTest {
       Assert.assertTrue((result instanceof Theory));
       Assert.assertEquals("thy", result.getName());
       this._assertTheoryExtension.assertTheoryParameters(result);
-      this._assertTheoryExtension.assertTheoryInternalElements(result, "rule0: TRUE |- TRUE", "rule1: FALSE |- FALSE");
+      this._assertTheoryExtension.assertTheoryRuleBlocks(result, "rule0: TRUE |- TRUE;rule1: FALSE |- FALSE;");
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -407,7 +398,7 @@ public class TheoryParsingTest {
       _builder.append("theory thy(T)");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("types List = nil | cons(head: \"T\", tail: \"List(T)\")");
+      _builder.append("type List = nil | cons(head: \"T\", tail: \"List(T)\")");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -432,7 +423,7 @@ public class TheoryParsingTest {
       _builder.append("theory thy");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("operators sqrt(x: \"NAT\")");
+      _builder.append("op sqrt(x: \"NAT\")");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -457,7 +448,7 @@ public class TheoryParsingTest {
       _builder.append("theory thy");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("operators plus(x: \"NAT\", y: \"NAT\")");
+      _builder.append("op plus(x: \"NAT\", y: \"NAT\")");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -482,7 +473,7 @@ public class TheoryParsingTest {
       _builder.append("theory thy");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("operators plus(x: \"NAT\", y: \"NAT\") : \"NAT\"");
+      _builder.append("op plus(x: \"NAT\", y: \"NAT\") : \"NAT\"");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -507,7 +498,7 @@ public class TheoryParsingTest {
       _builder.append("theory thy");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("operators sqrt prefix");
+      _builder.append("op sqrt prefix");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -532,7 +523,7 @@ public class TheoryParsingTest {
       _builder.append("theory thy");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("operators plus(x: \"NAT\", y:\"NAT\") infix");
+      _builder.append("op plus(x: \"NAT\", y:\"NAT\") infix");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -557,7 +548,7 @@ public class TheoryParsingTest {
       _builder.append("theory thy");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("operators trans(x: \"NAT\") postfix");
+      _builder.append("op trans(x: \"NAT\") postfix");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -582,7 +573,7 @@ public class TheoryParsingTest {
       _builder.append("theory thy");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("operators plus(x: \"NAT\", y:\"NAT\") associative");
+      _builder.append("op plus(x: \"NAT\", y:\"NAT\") associative");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -607,7 +598,7 @@ public class TheoryParsingTest {
       _builder.append("theory thy");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("operators plus(x: \"NAT\", y:\"NAT\") associative commutative");
+      _builder.append("op plus(x: \"NAT\", y:\"NAT\") associative commutative");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -632,7 +623,7 @@ public class TheoryParsingTest {
       _builder.append("theory thy");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("operators sqrt(x: \"INT\") for \"x:NAT\"");
+      _builder.append("op sqrt(x: \"INT\") for \"x:NAT\"");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -657,7 +648,7 @@ public class TheoryParsingTest {
       _builder.append("theory thy");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("operators plus(x: \"NAT\", y:\"NAT\") = \"x+y\" ");
+      _builder.append("op plus(x: \"NAT\", y:\"NAT\") = \"x+y\" ");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -682,7 +673,7 @@ public class TheoryParsingTest {
       _builder.append("theory thy");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("operators plus(x: \"NAT\", y:\"NAT\") = case x \"INT\" => \"x+y\" ");
+      _builder.append("op plus(x: \"NAT\", y:\"NAT\") = case x \"INT\" => \"x+y\" ");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -707,7 +698,7 @@ public class TheoryParsingTest {
       _builder.append("theory thy");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("operators listSize(l: \"List(T)\") prefix = case l");
+      _builder.append("op listSize(l: \"List(T)\") prefix = case l");
       _builder.newLine();
       _builder.append("\t\t");
       _builder.append("\"nil\" => \"0\" ");
@@ -738,7 +729,13 @@ public class TheoryParsingTest {
       _builder.append("theory thy");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("rules @rule0: variables x: \"NAT\" \"TRUE\" |- \"TRUE\"");
+      _builder.append("ruleblock");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("variables x: \"NAT\"");
+      _builder.newLine();
+      _builder.append("\t    ");
+      _builder.append("rule @rule0: \"TRUE\" |- \"TRUE\"");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -750,7 +747,7 @@ public class TheoryParsingTest {
       Assert.assertTrue((result instanceof Theory));
       Assert.assertEquals("thy", result.getName());
       this._assertTheoryExtension.assertTheoryParameters(result);
-      this._assertTheoryExtension.assertTheoryInternalElements(result, "rule0: x: NAT TRUE |- TRUE");
+      this._assertTheoryExtension.assertTheoryRuleBlocks(result, "x: NAT rule0: TRUE |- TRUE;");
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -763,7 +760,13 @@ public class TheoryParsingTest {
       _builder.append("theory thy");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("rules @rule0: variables x: \"NAT\" y: \"NAT\" \"TRUE\" |- \"TRUE\"");
+      _builder.append("ruleblock");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("variables x: \"NAT\" y: \"NAT\"");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("rule @rule0: \"TRUE\" |- \"TRUE\"");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -775,7 +778,7 @@ public class TheoryParsingTest {
       Assert.assertTrue((result instanceof Theory));
       Assert.assertEquals("thy", result.getName());
       this._assertTheoryExtension.assertTheoryParameters(result);
-      this._assertTheoryExtension.assertTheoryInternalElements(result, "rule0: x: NAT y: NAT TRUE |- TRUE");
+      this._assertTheoryExtension.assertTheoryRuleBlocks(result, "x: NAT y: NAT rule0: TRUE |- TRUE;");
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -788,7 +791,10 @@ public class TheoryParsingTest {
       _builder.append("theory thy");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("rules @rule0: \"TRUE\" \"FALSE\" |- \"FALSE\"");
+      _builder.append("ruleblock");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("rule @rule0: \"TRUE\" \"FALSE\" |- \"FALSE\"");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -800,7 +806,7 @@ public class TheoryParsingTest {
       Assert.assertTrue((result instanceof Theory));
       Assert.assertEquals("thy", result.getName());
       this._assertTheoryExtension.assertTheoryParameters(result);
-      this._assertTheoryExtension.assertTheoryInternalElements(result, "rule0: TRUE FALSE |- FALSE");
+      this._assertTheoryExtension.assertTheoryRuleBlocks(result, "rule0: TRUE FALSE |- FALSE;");
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -813,7 +819,10 @@ public class TheoryParsingTest {
       _builder.append("theory thy");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("rules @rule0: \"TRUE\" required \"FALSE\" |- \"FALSE\"");
+      _builder.append("ruleblock");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("rule @rule0: \"TRUE\" required \"FALSE\" |- \"FALSE\"");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -825,7 +834,7 @@ public class TheoryParsingTest {
       Assert.assertTrue((result instanceof Theory));
       Assert.assertEquals("thy", result.getName());
       this._assertTheoryExtension.assertTheoryParameters(result);
-      this._assertTheoryExtension.assertTheoryInternalElements(result, "rule0: TRUE required FALSE |- FALSE");
+      this._assertTheoryExtension.assertTheoryRuleBlocks(result, "rule0: TRUE required FALSE |- FALSE;");
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -838,13 +847,13 @@ public class TheoryParsingTest {
       _builder.append("theory thy");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("rules @CardNatRange:");
+      _builder.append("ruleblock");
       _builder.newLine();
       _builder.append("\t\t");
       _builder.append("variables i: \"INT\" j:\"INT\"");
       _builder.newLine();
       _builder.append("\t\t");
-      _builder.append("\"card(i..j)\" == \"j-i+1\"");
+      _builder.append("rule @CardNatRange: \"card(i..j)\" == \"j-i+1\"");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -856,7 +865,7 @@ public class TheoryParsingTest {
       Assert.assertTrue((result instanceof Theory));
       Assert.assertEquals("thy", result.getName());
       this._assertTheoryExtension.assertTheoryParameters(result);
-      this._assertTheoryExtension.assertTheoryInternalElements(result, "CardNatRange: i: INT j: INT card(i..j) == j-i+1");
+      this._assertTheoryExtension.assertTheoryRuleBlocks(result, "i: INT j: INT CardNatRange: card(i..j) == j-i+1;");
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -869,15 +878,15 @@ public class TheoryParsingTest {
       _builder.append("theory thy");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("rules @CardIntRange:");
+      _builder.append("ruleblock");
       _builder.newLine();
       _builder.append("\t\t");
       _builder.append("variables i: \"INT\" j:\"INT\"");
       _builder.newLine();
       _builder.append("\t\t");
-      _builder.append("\"card(i..j)\" == \"i<=j\" => \"j-i+1\"");
+      _builder.append("rule @CardIntRange: \"card(i..j)\" == \"i<=j\" => \"j-i+1\"");
       _builder.newLine();
-      _builder.append("\t\t\t\t\t\t");
+      _builder.append("\t\t\t\t\t\t\t\t\t   \t\t");
       _builder.append("\"i>j\" => \"0\"");
       _builder.newLine();
       _builder.append("end");
@@ -890,7 +899,7 @@ public class TheoryParsingTest {
       Assert.assertTrue((result instanceof Theory));
       Assert.assertEquals("thy", result.getName());
       this._assertTheoryExtension.assertTheoryParameters(result);
-      this._assertTheoryExtension.assertTheoryInternalElements(result, "CardIntRange: i: INT j: INT card(i..j) == i<=j => j-i+1 i>j => 0");
+      this._assertTheoryExtension.assertTheoryRuleBlocks(result, "i: INT j: INT CardIntRange: card(i..j) == i<=j => j-i+1 i>j => 0;");
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }

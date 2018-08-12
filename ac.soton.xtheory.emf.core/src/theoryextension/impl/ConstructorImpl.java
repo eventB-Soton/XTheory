@@ -17,9 +17,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.eventb.emf.core.impl.EventBNamedCommentedElementImpl;
-
+import org.eventb.emf.core.impl.EventBNamedImpl;
 import theoryextension.Constructor;
 import theoryextension.Destructor;
 import theoryextension.TheoryextensionPackage;
@@ -37,7 +35,7 @@ import theoryextension.TheoryextensionPackage;
  *
  * @generated
  */
-public class ConstructorImpl extends EventBNamedCommentedElementImpl implements Constructor {
+public class ConstructorImpl extends EventBNamedImpl implements Constructor {
 	/**
 	 * The cached value of the '{@link #getDestructors() <em>Destructors</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

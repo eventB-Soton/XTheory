@@ -42,8 +42,8 @@ class TheoryValidatorTest {
 		val testInput = 
 		'''
 			theory __synthetic0
-				theorems @thm0: "blablabla"
-				axioms @thm0: "blablabla"
+				thm @thm0: "blablabla"
+				axm @thm0: "blablabla"
 			end
 		'''
 		testInput.parse.assertError(TheoryextensionPackage::eINSTANCE.theory, null,
@@ -55,8 +55,8 @@ class TheoryValidatorTest {
 		val testInput = 
 		'''
 			theory __synthetic0
-				types List = nil
-				axioms @List: "blablabla"
+				type List = nil
+				axm @List: "blablabla"
 			end
 		'''
 		testInput.parse.assertError(TheoryextensionPackage::eINSTANCE.theory, null,
@@ -64,11 +64,25 @@ class TheoryValidatorTest {
 	}
 	
 	@Test
+	def void testRulesInternalElementsName() {
+		val testInput = 
+		'''
+			theory __synthetic0
+				ruleblock
+					rule @List: "bla" |- "blabla"
+				axm @List: "blablabla"
+			end
+		'''
+		testInput.parse.assertError(TheoryextensionPackage::eINSTANCE.theory, null,
+								    "Internal elements' and rules' names should be distinct")
+	}
+	
+	@Test
 	def void testDestructorName() {
 		val testInput =
 		'''
 			theory __synthetic0
-				types List = nil | cons(head: "T", cons: "List(T)")
+				type List = nil | cons(head: "T", cons: "List(T)")
 			end
 		'''
 		testInput.parse.assertNoErrors()
@@ -85,7 +99,7 @@ class TheoryValidatorTest {
 		val testInput = 
 		'''
 			theory __synthetic0
-				operators op infix
+				op oper infix
 			end
 		'''
 		testInput.parse.assertError(TheoryextensionPackage::eINSTANCE.theory, null,
@@ -97,7 +111,7 @@ class TheoryValidatorTest {
 		val testInput = 
 		'''
 			theory __synthetic0
-				operators op(x: "NAT") infix
+				op oper(x: "NAT") infix
 			end
 		'''
 		testInput.parse.assertError(TheoryextensionPackage::eINSTANCE.theory, null,
@@ -109,7 +123,7 @@ class TheoryValidatorTest {
 		val testInput = 
 		'''
 			theory __synthetic0
-				operators op postfix
+				op oper postfix
 			end
 		'''
 		testInput.parse.assertError(TheoryextensionPackage::eINSTANCE.theory, null,
@@ -121,7 +135,7 @@ class TheoryValidatorTest {
 		val testInput = 
 		'''
 			theory __synthetic0
-				operators plus(x: "NAT", y:"NAT") = case z "INT" => "x+y"
+				op plus(x: "NAT", y:"NAT") = case z "INT" => "x+y"
 			end
 		'''
 		testInput.parse.assertError(TheoryextensionPackage::eINSTANCE.theory, null,
@@ -133,7 +147,7 @@ class TheoryValidatorTest {
 		val testInput = 
 		'''
 			theory __synthetic0
-				operators plus(x: "NAT") associative
+				op plus(x: "NAT") associative
 			end
 		'''
 		testInput.parse.assertError(TheoryextensionPackage::eINSTANCE.theory, null,
@@ -145,7 +159,7 @@ class TheoryValidatorTest {
 		val testInput = 
 		'''
 			theory __synthetic0
-				operators plus(x: "NAT") associative
+				op plus(x: "NAT") associative
 			end
 		'''
 		testInput.parse.assertError(TheoryextensionPackage::eINSTANCE.theory, null,
@@ -157,7 +171,7 @@ class TheoryValidatorTest {
 		val testInput = 
 		'''
 			theory __synthetic0
-				types int = cons(zero: "zero")
+				type int = cons(zero: "zero")
 			end
 		'''
 		testInput.parse.assertError(TheoryextensionPackage::eINSTANCE.theory, null,

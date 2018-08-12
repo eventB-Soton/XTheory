@@ -71,12 +71,6 @@ public class TheoryItemProvider
 
 			addImportsPropertyDescriptor(object);
 			addParametersPropertyDescriptor(object);
-			addOperatorsPropertyDescriptor(object);
-			addTypesPropertyDescriptor(object);
-			addAxiomsPropertyDescriptor(object);
-			addTheoremsPropertyDescriptor(object);
-			addRulesPropertyDescriptor(object);
-			addVariablesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -126,138 +120,6 @@ public class TheoryItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Operators feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOperatorsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Theory_operators_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Theory_operators_feature", "_UI_Theory_type"),
-				 TheoryextensionPackage.Literals.THEORY__OPERATORS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Types feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addTypesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Theory_types_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Theory_types_feature", "_UI_Theory_type"),
-				 TheoryextensionPackage.Literals.THEORY__TYPES,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Axioms feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addAxiomsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Theory_axioms_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Theory_axioms_feature", "_UI_Theory_type"),
-				 TheoryextensionPackage.Literals.THEORY__AXIOMS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Theorems feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addTheoremsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Theory_theorems_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Theory_theorems_feature", "_UI_Theory_type"),
-				 TheoryextensionPackage.Literals.THEORY__THEOREMS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Rules feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addRulesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Theory_rules_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Theory_rules_feature", "_UI_Theory_type"),
-				 TheoryextensionPackage.Literals.THEORY__RULES,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Variables feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addVariablesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Theory_variables_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Theory_variables_feature", "_UI_Theory_type"),
-				 TheoryextensionPackage.Literals.THEORY__VARIABLES,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -270,6 +132,7 @@ public class TheoryItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(CorePackage.Literals.EVENT_BOBJECT__ANNOTATIONS);
+			childrenFeatures.add(TheoryextensionPackage.Literals.THEORY__RULE_BLOCKS);
 			childrenFeatures.add(TheoryextensionPackage.Literals.THEORY__INTERNAL_ELEMENTS);
 		}
 		return childrenFeatures;
@@ -326,6 +189,7 @@ public class TheoryItemProvider
 
 		switch (notification.getFeatureID(Theory.class)) {
 			case TheoryextensionPackage.THEORY__ANNOTATIONS:
+			case TheoryextensionPackage.THEORY__RULE_BLOCKS:
 			case TheoryextensionPackage.THEORY__INTERNAL_ELEMENTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -348,6 +212,11 @@ public class TheoryItemProvider
 				(createChildParameter
 					(CorePackage.Literals.EVENT_BOBJECT__ANNOTATIONS,
 				 	CoreFactory.eINSTANCE.createAnnotation()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(TheoryextensionPackage.Literals.THEORY__RULE_BLOCKS,
+				 	TheoryextensionFactory.eINSTANCE.createRuleBlock()));
 		
 			newChildDescriptors.add
 				(createChildParameter
@@ -397,7 +266,7 @@ public class TheoryItemProvider
 			newChildDescriptors.add
 				(createChildParameter
 					(TheoryextensionPackage.Literals.THEORY__INTERNAL_ELEMENTS,
-				 	TheoryextensionFactory.eINSTANCE.createRuleBlock()));
+				 	TheoryextensionFactory.eINSTANCE.createRule()));
 		
 			newChildDescriptors.add
 				(createChildParameter

@@ -7,6 +7,7 @@
 package theoryextension;
 
 import org.eventb.emf.core.EventBNamed;
+import org.eventb.emf.core.EventBObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,5 +19,5 @@ import org.eventb.emf.core.EventBNamed;
  * @model
  * @generated
  */
-public interface Parameter extends EventBNamed {
+public interface Parameter extends EventBNamed, EventBObject {
 } // Parameter

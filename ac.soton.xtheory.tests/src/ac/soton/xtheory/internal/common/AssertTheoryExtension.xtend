@@ -18,6 +18,8 @@ import theoryextension.RuleBlock
 import theoryextension.Variable
 import theoryextension.ConditionalRewriteRule
 import theoryextension.Given
+import org.eventb.emf.core.EventBObject
+import theoryextension.Rule
 
 class AssertTheoryExtension {
 	/**
@@ -61,6 +63,21 @@ class AssertTheoryExtension {
 		for (var i = 0; i < expectedInternalElements.length; i++) {
 			Assert.assertEquals("Incorrect internalElement name", 
 				expectedInternalElements.get(i), actualInternalElements.get(i).prettyPrint()
+			)
+		}
+	}
+	
+	def assertTheoryRuleBlocks(Theory thy, String... expectedRuleblocks) {
+		// Assert precondition
+		Assert.assertNotNull("Input theory must not be null", thy)
+		
+		val actualruleBlocks = thy.ruleBlocks
+		Assert.assertEquals("Incorrect number of internalElements", 
+			expectedRuleblocks.length, actualruleBlocks.length
+		)
+		for (var i = 0; i < expectedRuleblocks.length; i++) {
+			Assert.assertEquals("Incorrect internalElement name", 
+				expectedRuleblocks.get(i), actualruleBlocks.get(i).prettyPrint()
 			)
 		}
 	}
@@ -118,28 +135,35 @@ class AssertTheoryExtension {
 		if (lmnt instanceof Variable){
 			str += ": " + lmnt.type
 		}
-		if (lmnt instanceof RuleBlock){
-			str += ": "
-			for (Variable vari: lmnt.variables)
-				str += vari.prettyPrint() + " "
-			if (lmnt.rule.rrule !== null){
-				str += lmnt.rule.rrule.pattern + " =="
-				if (lmnt.rule.rrule.urule !== null)
-					for (String s: lmnt.rule.rrule.urule.rhs)
-					str += " " + s
-				else{
-					for (ConditionalRewriteRule crr: lmnt.rule.rrule.crule.rewrites)
-						str += " " + crr.lhs + " => " + crr.rhs
-				}
-			}
-			else{
-				for (Given giv: lmnt.rule.irule.given){
-					str += giv.expression + " "
-					if (giv.required) str += "required "
-				}
-				str += "|- " + lmnt.rule.irule.infer.expression
-			}
+		return str
+	}
+	
+	def private prettyPrint(RuleBlock rb) {
+		var str = ""
+		for (Variable vari: rb.variables) {
+			str += vari.prettyPrint() + " "
 		}
+		for (Rule rule: rb.rules) {
+			str += rule.name + ": "
+			if (rule.rrule !== null) {
+				str += rule.rrule.pattern + " =="
+				if (rule.rrule.urule !== null)
+					for (String s: rule.rrule.urule.rhs)
+						str += " " + s
+				else
+					for (ConditionalRewriteRule crr: rule.rrule.crule.rewrites)
+						str += " " + crr.lhs + " => " + crr.rhs
+			}
+			else {
+				for (Given giv: rule.irule.given){
+					str += giv.expression + " "
+						if (giv.required) str += "required "
+				}
+				str += "|- " + rule.irule.infer.expression
+			}
+			str += ";"
+		}
+		
 		return str
 	}
 }

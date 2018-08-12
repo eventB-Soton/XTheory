@@ -1,4 +1,4 @@
-grammar ac.soton.xtheory.Theory with org.eclipse.xtext.common.Terminals hidden (WS)
+grammar ac.soton.xtheory.Theory with org.eclipse.xtext.common.Terminals hidden (WS, ML_COMMENT, SL_COMMENT)
 
 //generate theory "http://www.soton.ac/xtheory/Theory"
 //import "http://emf.eventb.org/models/core/2014" as eventbcore
@@ -7,13 +7,13 @@ import "http://soton.ac.uk/models/eventb/theoryextension/2018"
 
 Theory:
 	'theory' name=ID ('(' parameters+=Parameter+')')?
-	('imports' imports +=ID (imports += ID)*)?
+	('import' imports +=ID (imports += ID)*)?
 	(
-		('types' internalElements += Type+) |
-		('operators' internalElements += Operator+) |
-		('axioms' internalElements += Axiom+) |
-		('theorems' internalElements += Theorem+) |
-		('rules' internalElements += RuleBlock+)
+		('type' internalElements += Type) |
+		('op' internalElements += Operator) |
+		('axm' internalElements += Axiom) |
+		('thm' internalElements += Theorem) |
+		('ruleblock' ruleBlocks += RuleBlock)
 	)*
 	'end'
 ;
@@ -23,7 +23,6 @@ Parameter:
 ;
 
 Type:
-	(comment = (ML_COMMENT | SL_COMMENT))?
 	name=ID
 	(
 		'(' parameters += [Parameter]+')'
@@ -32,18 +31,15 @@ Type:
 ;
 
 Constructor:
-	(comment = (ML_COMMENT | SL_COMMENT))?
 	name=ID
 	('(' destructors += Destructor (',' destructors += Destructor)* ')')?	
 ;
 
 Destructor:
-	(comment = (ML_COMMENT | SL_COMMENT))?
 	name=ID ":" type=STRING
 ;
 
 Operator:
-	(comment = (ML_COMMENT | SL_COMMENT))?
 	name=ID ('(' arguments += Argument (',' arguments += Argument)*')')?
 	(
 		(':' type=STRING)? &
@@ -63,7 +59,6 @@ Operator:
 ;
 
 Argument:
-	(comment = (ML_COMMENT | SL_COMMENT))?
 	name=ID ":" type=STRING
 ;
 
@@ -75,27 +70,20 @@ Case:
 ;
 
 Axiom:
-	(comment = (ML_COMMENT | SL_COMMENT))?
 	'@'name=ID':' predicate=STRING
 ;
 
 Theorem:
-	(comment = (ML_COMMENT | SL_COMMENT))?
 	'@'name=ID':' predicate=STRING
 ;
 
-RuleBlock: 
-	(comment = (ML_COMMENT | SL_COMMENT))?
-	'@'name=ID':'
-	(
-		('variables' variables += Variable+)?
-		rule = Rule
-	)
+RuleBlock:
+	('variables' variables += Variable+)?
+	('rule' rules += Rule)+
 ;
 
 Rule:
-	//(comment = (ML_COMMENT | SL_COMMENT))?
-	//'@'name=ID':'
+	'@'name=ID':'
 	(
 		rrule=RewriteRule |
 		irule=InferenceRule
@@ -103,7 +91,6 @@ Rule:
 ;
 
 Variable:
-	(comment = (ML_COMMENT | SL_COMMENT))?
 	name=ID ':' type=STRING
 ;
 

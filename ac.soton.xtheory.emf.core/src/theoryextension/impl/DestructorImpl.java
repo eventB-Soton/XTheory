@@ -11,9 +11,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eventb.emf.core.impl.EventBNamedCommentedElementImpl;
-
+import org.eventb.emf.core.impl.EventBNamedImpl;
 import theoryextension.Destructor;
 import theoryextension.TheoryextensionPackage;
 
@@ -30,7 +28,7 @@ import theoryextension.TheoryextensionPackage;
  *
  * @generated
  */
-public class DestructorImpl extends EventBNamedCommentedElementImpl implements Destructor {
+public class DestructorImpl extends EventBNamedImpl implements Destructor {
 	/**
 	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->

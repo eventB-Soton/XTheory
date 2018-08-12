@@ -12,13 +12,8 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eventb.emf.core.EventBCommented;
-import org.eventb.emf.core.EventBCommentedElement;
-import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.EventBExpression;
 import org.eventb.emf.core.EventBNamed;
-import org.eventb.emf.core.EventBNamedCommentedElement;
 import org.eventb.emf.core.EventBObject;
 
 import theoryextension.*;
@@ -166,22 +161,6 @@ public class TheoryextensionAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseEventBObject(EventBObject object) {
 				return createEventBObjectAdapter();
-			}
-			@Override
-			public Adapter caseEventBElement(EventBElement object) {
-				return createEventBElementAdapter();
-			}
-			@Override
-			public Adapter caseEventBCommented(EventBCommented object) {
-				return createEventBCommentedAdapter();
-			}
-			@Override
-			public Adapter caseEventBCommentedElement(EventBCommentedElement object) {
-				return createEventBCommentedElementAdapter();
-			}
-			@Override
-			public Adapter caseEventBNamedCommentedElement(EventBNamedCommentedElement object) {
-				return createEventBNamedCommentedElementAdapter();
 			}
 			@Override
 			public Adapter caseEventBExpression(EventBExpression object) {
@@ -512,62 +491,6 @@ public class TheoryextensionAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEventBObjectAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eventb.emf.core.EventBElement <em>Event BElement</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eventb.emf.core.EventBElement
-	 * @generated
-	 */
-	public Adapter createEventBElementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eventb.emf.core.EventBCommented <em>Event BCommented</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eventb.emf.core.EventBCommented
-	 * @generated
-	 */
-	public Adapter createEventBCommentedAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eventb.emf.core.EventBCommentedElement <em>Event BCommented Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eventb.emf.core.EventBCommentedElement
-	 * @generated
-	 */
-	public Adapter createEventBCommentedElementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eventb.emf.core.EventBNamedCommentedElement <em>Event BNamed Commented Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eventb.emf.core.EventBNamedCommentedElement
-	 * @generated
-	 */
-	public Adapter createEventBNamedCommentedElementAdapter() {
 		return null;
 	}
 
