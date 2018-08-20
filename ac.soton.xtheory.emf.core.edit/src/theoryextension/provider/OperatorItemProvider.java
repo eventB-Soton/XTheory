@@ -25,8 +25,9 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.eventb.emf.core.provider.EventBNamedCommentedElementItemProvider;
-
+import org.eventb.emf.core.CoreFactory;
+import org.eventb.emf.core.CorePackage;
+import org.eventb.emf.core.provider.EventBNamedItemProvider;
 import theoryextension.Operator;
 import theoryextension.TheoryextensionFactory;
 import theoryextension.TheoryextensionPackage;
@@ -38,7 +39,7 @@ import theoryextension.TheoryextensionPackage;
  * @generated
  */
 public class OperatorItemProvider
-	extends EventBNamedCommentedElementItemProvider
+	extends EventBNamedItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -266,6 +267,7 @@ public class OperatorItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
+			childrenFeatures.add(CorePackage.Literals.EVENT_BOBJECT__ANNOTATIONS);
 			childrenFeatures.add(TheoryextensionPackage.Literals.OPERATOR__WD);
 			childrenFeatures.add(TheoryextensionPackage.Literals.OPERATOR__CASES);
 		}
@@ -331,6 +333,7 @@ public class OperatorItemProvider
 			case TheoryextensionPackage.OPERATOR__CASE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
+			case TheoryextensionPackage.OPERATOR__ANNOTATIONS:
 			case TheoryextensionPackage.OPERATOR__WD:
 			case TheoryextensionPackage.OPERATOR__CASES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -349,6 +352,11 @@ public class OperatorItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.EVENT_BOBJECT__ANNOTATIONS,
+				 	CoreFactory.eINSTANCE.createAnnotation()));
 
 		newChildDescriptors.add
 			(createChildParameter

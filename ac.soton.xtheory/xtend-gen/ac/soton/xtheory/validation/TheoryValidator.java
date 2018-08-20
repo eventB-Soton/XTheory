@@ -34,21 +34,24 @@ public class TheoryValidator extends AbstractTheoryValidator {
     }
   }
   
-  /**
-   * // Check the name of the theory parameters as they must be distinct one another
-   * @Check
-   * def checkTheoryParametersName(Theory thy){
-   * var i=0
-   * for(; i<thy.parameters.size() ; i++){
-   * var j=i+1
-   * for(; j<thy.parameters.size() ; j++){
-   * if (thy.parameters.get(i).name == thy.parameters.get(j).name)
-   * error("Theory parameters' names should be distinct", thy.parameters.get(i).eClass().getEAllStructuralFeatures().get(0))
-   * //if none, all the file is underlined. Here we only have the theory name underlined
-   * }
-   * }
-   * }
-   */
+  @Check
+  public void checkTheoryParametersName(final Theory thy) {
+    int i = 0;
+    for (; (i < thy.getParameters().size()); i++) {
+      {
+        int j = (i + 1);
+        for (; (j < thy.getParameters().size()); j++) {
+          String _name = thy.getParameters().get(i).getName();
+          String _name_1 = thy.getParameters().get(j).getName();
+          boolean _equals = Objects.equal(_name, _name_1);
+          if (_equals) {
+            this.error("Theory parameters\' names should be distinct", thy.getParameters().get(i).eClass().getEAllStructuralFeatures().get(0));
+          }
+        }
+      }
+    }
+  }
+  
   @Check
   public void checkInternalElementsName(final Theory thy) {
     int i = 0;
@@ -61,6 +64,29 @@ public class TheoryValidator extends AbstractTheoryValidator {
           boolean _equals = Objects.equal(_name, _name_1);
           if (_equals) {
             this.error("Internal elements\' names should be distinct", thy.getInternalElements().get(i).eClass().getEAllStructuralFeatures().get(0));
+          }
+        }
+      }
+    }
+  }
+  
+  @Check
+  public void checkRuleInternalElementsName(final Theory thy) {
+    int i = 0;
+    for (; (i < thy.getInternalElements().size()); i++) {
+      {
+        int j = 0;
+        for (; (j < thy.getRuleBlocks().size()); j++) {
+          {
+            int k = 0;
+            for (; (k < thy.getRuleBlocks().get(j).getRules().size()); k++) {
+              String _name = thy.getInternalElements().get(i).getName();
+              String _name_1 = thy.getRuleBlocks().get(j).getRules().get(k).getName();
+              boolean _equals = Objects.equal(_name, _name_1);
+              if (_equals) {
+                this.error("Internal elements\' and rules\' names should be distinct", thy.getInternalElements().get(i).eClass().getEAllStructuralFeatures().get(0));
+              }
+            }
           }
         }
       }

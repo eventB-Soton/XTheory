@@ -22,9 +22,7 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
-import org.eventb.emf.core.provider.EventBNamedCommentedElementItemProvider;
-
+import org.eventb.emf.core.provider.EventBNamedItemProvider;
 import theoryextension.TheoryextensionPackage;
 import theoryextension.Variable;
 
@@ -35,7 +33,7 @@ import theoryextension.Variable;
  * @generated
  */
 public class VariableItemProvider
-	extends EventBNamedCommentedElementItemProvider
+	extends EventBNamedItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,

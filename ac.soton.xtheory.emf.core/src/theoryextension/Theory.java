@@ -21,12 +21,7 @@ import org.eventb.emf.core.EventBObject;
  * <ul>
  *   <li>{@link theoryextension.Theory#getImports <em>Imports</em>}</li>
  *   <li>{@link theoryextension.Theory#getParameters <em>Parameters</em>}</li>
- *   <li>{@link theoryextension.Theory#getOperators <em>Operators</em>}</li>
- *   <li>{@link theoryextension.Theory#getTypes <em>Types</em>}</li>
- *   <li>{@link theoryextension.Theory#getAxioms <em>Axioms</em>}</li>
- *   <li>{@link theoryextension.Theory#getTheorems <em>Theorems</em>}</li>
- *   <li>{@link theoryextension.Theory#getRules <em>Rules</em>}</li>
- *   <li>{@link theoryextension.Theory#getVariables <em>Variables</em>}</li>
+ *   <li>{@link theoryextension.Theory#getRuleBlocks <em>Rule Blocks</em>}</li>
  *   <li>{@link theoryextension.Theory#getInternalElements <em>Internal Elements</em>}</li>
  * </ul>
  * </p>
@@ -69,100 +64,20 @@ public interface Theory extends EventBNamed, EventBObject {
 	EList<Parameter> getParameters();
 
 	/**
-	 * Returns the value of the '<em><b>Operators</b></em>' containment reference list.
-	 * The list contents are of type {@link theoryextension.Operator}.
+	 * Returns the value of the '<em><b>Rule Blocks</b></em>' containment reference list.
+	 * The list contents are of type {@link theoryextension.RuleBlock}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Operators</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Rule Blocks</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Operators</em>' containment reference list.
-	 * @see theoryextension.TheoryextensionPackage#getTheory_Operators()
+	 * @return the value of the '<em>Rule Blocks</em>' containment reference list.
+	 * @see theoryextension.TheoryextensionPackage#getTheory_RuleBlocks()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList<Operator> getOperators();
-
-	/**
-	 * Returns the value of the '<em><b>Types</b></em>' containment reference list.
-	 * The list contents are of type {@link theoryextension.Type}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Types</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Types</em>' containment reference list.
-	 * @see theoryextension.TheoryextensionPackage#getTheory_Types()
-	 * @model containment="true" resolveProxies="true"
-	 * @generated
-	 */
-	EList<Type> getTypes();
-
-	/**
-	 * Returns the value of the '<em><b>Axioms</b></em>' containment reference list.
-	 * The list contents are of type {@link theoryextension.Axiom}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Axioms</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Axioms</em>' containment reference list.
-	 * @see theoryextension.TheoryextensionPackage#getTheory_Axioms()
-	 * @model containment="true" resolveProxies="true"
-	 * @generated
-	 */
-	EList<Axiom> getAxioms();
-
-	/**
-	 * Returns the value of the '<em><b>Theorems</b></em>' containment reference list.
-	 * The list contents are of type {@link theoryextension.Theorem}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Theorems</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Theorems</em>' containment reference list.
-	 * @see theoryextension.TheoryextensionPackage#getTheory_Theorems()
-	 * @model containment="true" resolveProxies="true"
-	 * @generated
-	 */
-	EList<Theorem> getTheorems();
-
-	/**
-	 * Returns the value of the '<em><b>Rules</b></em>' containment reference list.
-	 * The list contents are of type {@link theoryextension.Rule}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Rules</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Rules</em>' containment reference list.
-	 * @see theoryextension.TheoryextensionPackage#getTheory_Rules()
-	 * @model containment="true" resolveProxies="true"
-	 * @generated
-	 */
-	EList<Rule> getRules();
-
-	/**
-	 * Returns the value of the '<em><b>Variables</b></em>' containment reference list.
-	 * The list contents are of type {@link theoryextension.Variable}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Variables</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Variables</em>' containment reference list.
-	 * @see theoryextension.TheoryextensionPackage#getTheory_Variables()
-	 * @model containment="true" resolveProxies="true"
-	 * @generated
-	 */
-	EList<Variable> getVariables();
+	EList<RuleBlock> getRuleBlocks();
 
 	/**
 	 * Returns the value of the '<em><b>Internal Elements</b></em>' containment reference list.

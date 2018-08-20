@@ -11,9 +11,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eventb.emf.core.impl.EventBNamedCommentedElementImpl;
-
+import org.eventb.emf.core.impl.EventBNamedImpl;
 import theoryextension.TheoryextensionPackage;
 import theoryextension.Variable;
 
@@ -30,7 +28,7 @@ import theoryextension.Variable;
  *
  * @generated
  */
-public class VariableImpl extends EventBNamedCommentedElementImpl implements Variable {
+public class VariableImpl extends EventBNamedImpl implements Variable {
 	/**
 	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->

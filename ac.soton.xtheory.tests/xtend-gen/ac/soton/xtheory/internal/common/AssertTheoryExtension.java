@@ -16,6 +16,7 @@ import theoryextension.Notation;
 import theoryextension.Operator;
 import theoryextension.Parameter;
 import theoryextension.RewriteRule;
+import theoryextension.Rule;
 import theoryextension.RuleBlock;
 import theoryextension.Theorem;
 import theoryextension.Theory;
@@ -58,6 +59,17 @@ public class AssertTheoryExtension {
     for (int i = 0; (i < expectedInternalElements.length); i++) {
       Assert.assertEquals("Incorrect internalElement name", 
         expectedInternalElements[i], this.prettyPrint(actualInternalElements.get(i)));
+    }
+  }
+  
+  public void assertTheoryRuleBlocks(final Theory thy, final String... expectedRuleblocks) {
+    Assert.assertNotNull("Input theory must not be null", thy);
+    final EList<RuleBlock> actualruleBlocks = thy.getRuleBlocks();
+    Assert.assertEquals("Incorrect number of internalElements", 
+      expectedRuleblocks.length, ((Object[])Conversions.unwrapArray(actualruleBlocks, Object.class)).length);
+    for (int i = 0; (i < expectedRuleblocks.length); i++) {
+      Assert.assertEquals("Incorrect internalElement name", 
+        expectedRuleblocks[i], this.prettyPrint(actualruleBlocks.get(i)));
     }
   }
   
@@ -238,62 +250,74 @@ public class AssertTheoryExtension {
       String _plus_15 = (": " + _type_2);
       str = (_str_17 + _plus_15);
     }
-    if ((lmnt instanceof RuleBlock)) {
-      String _str_18 = str;
-      str = (_str_18 + ": ");
-      EList<Variable> _variables = ((RuleBlock)lmnt).getVariables();
-      for (final Variable vari : _variables) {
-        String _str_19 = str;
-        Object _prettyPrint_2 = this.prettyPrint(vari);
-        String _plus_16 = (_prettyPrint_2 + " ");
-        str = (_str_19 + _plus_16);
-      }
-      RewriteRule _rrule = ((RuleBlock)lmnt).getRule().getRrule();
-      boolean _tripleNotEquals = (_rrule != null);
-      if (_tripleNotEquals) {
-        String _str_20 = str;
-        String _pattern_1 = ((RuleBlock)lmnt).getRule().getRrule().getPattern();
-        String _plus_17 = (_pattern_1 + " ==");
-        str = (_str_20 + _plus_17);
-        UnconditionalRewrite _urule = ((RuleBlock)lmnt).getRule().getRrule().getUrule();
-        boolean _tripleNotEquals_1 = (_urule != null);
-        if (_tripleNotEquals_1) {
-          EList<String> _rhs = ((RuleBlock)lmnt).getRule().getRrule().getUrule().getRhs();
-          for (final String s : _rhs) {
-            String _str_21 = str;
-            str = (_str_21 + (" " + s));
-          }
-        } else {
-          EList<ConditionalRewriteRule> _rewrites = ((RuleBlock)lmnt).getRule().getRrule().getCrule().getRewrites();
-          for (final ConditionalRewriteRule crr : _rewrites) {
-            String _str_22 = str;
-            String _lhs = crr.getLhs();
-            String _plus_18 = (" " + _lhs);
-            String _plus_19 = (_plus_18 + " => ");
-            String _rhs_1 = crr.getRhs();
-            String _plus_20 = (_plus_19 + _rhs_1);
-            str = (_str_22 + _plus_20);
-          }
-        }
-      } else {
-        EList<Given> _given = ((RuleBlock)lmnt).getRule().getIrule().getGiven();
-        for (final Given giv : _given) {
-          {
-            String _str_23 = str;
-            String _expression = giv.getExpression();
-            String _plus_21 = (_expression + " ");
-            str = (_str_23 + _plus_21);
-            boolean _isRequired = giv.isRequired();
-            if (_isRequired) {
-              String _str_24 = str;
-              str = (_str_24 + "required ");
+    return str;
+  }
+  
+  private String prettyPrint(final RuleBlock rb) {
+    String str = "";
+    EList<Variable> _variables = rb.getVariables();
+    for (final Variable vari : _variables) {
+      String _str = str;
+      String _prettyPrint = this.prettyPrint(vari);
+      String _plus = (_prettyPrint + " ");
+      str = (_str + _plus);
+    }
+    EList<Rule> _rules = rb.getRules();
+    for (final Rule rule : _rules) {
+      {
+        String _str_1 = str;
+        String _name = rule.getName();
+        String _plus_1 = (_name + ": ");
+        str = (_str_1 + _plus_1);
+        RewriteRule _rrule = rule.getRrule();
+        boolean _tripleNotEquals = (_rrule != null);
+        if (_tripleNotEquals) {
+          String _str_2 = str;
+          String _pattern = rule.getRrule().getPattern();
+          String _plus_2 = (_pattern + " ==");
+          str = (_str_2 + _plus_2);
+          UnconditionalRewrite _urule = rule.getRrule().getUrule();
+          boolean _tripleNotEquals_1 = (_urule != null);
+          if (_tripleNotEquals_1) {
+            EList<String> _rhs = rule.getRrule().getUrule().getRhs();
+            for (final String s : _rhs) {
+              String _str_3 = str;
+              str = (_str_3 + (" " + s));
+            }
+          } else {
+            EList<ConditionalRewriteRule> _rewrites = rule.getRrule().getCrule().getRewrites();
+            for (final ConditionalRewriteRule crr : _rewrites) {
+              String _str_4 = str;
+              String _lhs = crr.getLhs();
+              String _plus_3 = (" " + _lhs);
+              String _plus_4 = (_plus_3 + " => ");
+              String _rhs_1 = crr.getRhs();
+              String _plus_5 = (_plus_4 + _rhs_1);
+              str = (_str_4 + _plus_5);
             }
           }
+        } else {
+          EList<Given> _given = rule.getIrule().getGiven();
+          for (final Given giv : _given) {
+            {
+              String _str_5 = str;
+              String _expression = giv.getExpression();
+              String _plus_6 = (_expression + " ");
+              str = (_str_5 + _plus_6);
+              boolean _isRequired = giv.isRequired();
+              if (_isRequired) {
+                String _str_6 = str;
+                str = (_str_6 + "required ");
+              }
+            }
+          }
+          String _str_5 = str;
+          String _expression = rule.getIrule().getInfer().getExpression();
+          String _plus_6 = ("|- " + _expression);
+          str = (_str_5 + _plus_6);
         }
-        String _str_23 = str;
-        String _expression = ((RuleBlock)lmnt).getRule().getIrule().getInfer().getExpression();
-        String _plus_21 = ("|- " + _expression);
-        str = (_str_23 + _plus_21);
+        String _str_6 = str;
+        str = (_str_6 + ";");
       }
     }
     return str;

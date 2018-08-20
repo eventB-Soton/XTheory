@@ -13,8 +13,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eventb.emf.core.impl.EventBNamedImpl;
 import theoryextension.InferenceRule;
 import theoryextension.RewriteRule;
 import theoryextension.Rule;
@@ -34,7 +33,7 @@ import theoryextension.TheoryextensionPackage;
  *
  * @generated
  */
-public class RuleImpl extends MinimalEObjectImpl.Container implements Rule {
+public class RuleImpl extends EventBNamedImpl implements Rule {
 	/**
 	 * The cached value of the '{@link #getRrule() <em>Rrule</em>}' containment reference.
 	 * <!-- begin-user-doc -->

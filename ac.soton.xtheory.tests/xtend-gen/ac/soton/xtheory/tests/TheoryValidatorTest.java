@@ -59,10 +59,10 @@ public class TheoryValidatorTest {
       _builder.append("theory __synthetic0");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("theorems @thm0: \"blablabla\"");
+      _builder.append("thm @thm0: \"blablabla\"");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("axioms @thm0: \"blablabla\"");
+      _builder.append("axm @thm0: \"blablabla\"");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -81,10 +81,10 @@ public class TheoryValidatorTest {
       _builder.append("theory __synthetic0");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("types List = nil");
+      _builder.append("type List = nil");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("axioms @List: \"blablabla\"");
+      _builder.append("axm @List: \"blablabla\"");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -97,13 +97,38 @@ public class TheoryValidatorTest {
   }
   
   @Test
+  public void testRulesInternalElementsName() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("theory __synthetic0");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("ruleblock");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("rule @List: \"bla\" |- \"blabla\"");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("axm @List: \"blablabla\"");
+      _builder.newLine();
+      _builder.append("end");
+      _builder.newLine();
+      final String testInput = _builder.toString();
+      this._validationTestHelper.assertError(this._parseHelper.parse(testInput), TheoryextensionPackage.eINSTANCE.getTheory(), null, 
+        "Internal elements\' and rules\' names should be distinct");
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
   public void testDestructorName() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("theory __synthetic0");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("types List = nil | cons(head: \"T\", cons: \"List(T)\")");
+      _builder.append("type List = nil | cons(head: \"T\", cons: \"List(T)\")");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -121,7 +146,7 @@ public class TheoryValidatorTest {
       _builder.append("theory __synthetic0");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("operators op infix");
+      _builder.append("op oper infix");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -140,7 +165,7 @@ public class TheoryValidatorTest {
       _builder.append("theory __synthetic0");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("operators op(x: \"NAT\") infix");
+      _builder.append("op oper(x: \"NAT\") infix");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -159,7 +184,7 @@ public class TheoryValidatorTest {
       _builder.append("theory __synthetic0");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("operators op postfix");
+      _builder.append("op oper postfix");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -178,7 +203,7 @@ public class TheoryValidatorTest {
       _builder.append("theory __synthetic0");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("operators plus(x: \"NAT\", y:\"NAT\") = case z \"INT\" => \"x+y\"");
+      _builder.append("op plus(x: \"NAT\", y:\"NAT\") = case z \"INT\" => \"x+y\"");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -197,7 +222,7 @@ public class TheoryValidatorTest {
       _builder.append("theory __synthetic0");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("operators plus(x: \"NAT\") associative");
+      _builder.append("op plus(x: \"NAT\") associative");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -216,7 +241,7 @@ public class TheoryValidatorTest {
       _builder.append("theory __synthetic0");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("operators plus(x: \"NAT\") associative");
+      _builder.append("op plus(x: \"NAT\") associative");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -235,7 +260,7 @@ public class TheoryValidatorTest {
       _builder.append("theory __synthetic0");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("types int = cons(zero: \"zero\")");
+      _builder.append("type int = cons(zero: \"zero\")");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();

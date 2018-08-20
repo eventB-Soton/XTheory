@@ -22,9 +22,7 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
-import org.eventb.emf.core.provider.EventBNamedCommentedElementItemProvider;
-
+import org.eventb.emf.core.provider.EventBObjectItemProvider;
 import theoryextension.RuleBlock;
 import theoryextension.TheoryextensionFactory;
 import theoryextension.TheoryextensionPackage;
@@ -36,7 +34,7 @@ import theoryextension.TheoryextensionPackage;
  * @generated
  */
 public class RuleBlockItemProvider
-	extends EventBNamedCommentedElementItemProvider
+	extends EventBObjectItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -80,7 +78,7 @@ public class RuleBlockItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(TheoryextensionPackage.Literals.RULE_BLOCK__RULE);
+			childrenFeatures.add(TheoryextensionPackage.Literals.RULE_BLOCK__RULES);
 			childrenFeatures.add(TheoryextensionPackage.Literals.RULE_BLOCK__VARIABLES);
 		}
 		return childrenFeatures;
@@ -118,10 +116,7 @@ public class RuleBlockItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((RuleBlock)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_RuleBlock_type") :
-			getString("_UI_RuleBlock_type") + " " + label;
+		return getString("_UI_RuleBlock_type");
 	}
 
 	/**
@@ -136,7 +131,7 @@ public class RuleBlockItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(RuleBlock.class)) {
-			case TheoryextensionPackage.RULE_BLOCK__RULE:
+			case TheoryextensionPackage.RULE_BLOCK__RULES:
 			case TheoryextensionPackage.RULE_BLOCK__VARIABLES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -157,7 +152,7 @@ public class RuleBlockItemProvider
 		
 			newChildDescriptors.add
 				(createChildParameter
-					(TheoryextensionPackage.Literals.RULE_BLOCK__RULE,
+					(TheoryextensionPackage.Literals.RULE_BLOCK__RULES,
 				 	TheoryextensionFactory.eINSTANCE.createRule()));
 		
 			newChildDescriptors.add

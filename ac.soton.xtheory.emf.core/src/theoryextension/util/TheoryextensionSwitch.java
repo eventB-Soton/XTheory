@@ -10,13 +10,8 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
-import org.eventb.emf.core.EventBCommented;
-import org.eventb.emf.core.EventBCommentedElement;
-import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.EventBExpression;
 import org.eventb.emf.core.EventBNamed;
-import org.eventb.emf.core.EventBNamedCommentedElement;
 import org.eventb.emf.core.EventBObject;
 
 import theoryextension.*;
@@ -107,17 +102,14 @@ public class TheoryextensionSwitch<T> {
 				Parameter parameter = (Parameter)theEObject;
 				T result = caseParameter(parameter);
 				if (result == null) result = caseEventBNamed(parameter);
+				if (result == null) result = caseEventBObject(parameter);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case TheoryextensionPackage.OPERATOR: {
 				Operator operator = (Operator)theEObject;
 				T result = caseOperator(operator);
-				if (result == null) result = caseEventBNamedCommentedElement(operator);
-				if (result == null) result = caseEventBCommentedElement(operator);
 				if (result == null) result = caseEventBNamed(operator);
-				if (result == null) result = caseEventBElement(operator);
-				if (result == null) result = caseEventBCommented(operator);
 				if (result == null) result = caseEventBObject(operator);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -132,23 +124,14 @@ public class TheoryextensionSwitch<T> {
 			case TheoryextensionPackage.ARGUMENT: {
 				Argument argument = (Argument)theEObject;
 				T result = caseArgument(argument);
-				if (result == null) result = caseEventBNamedCommentedElement(argument);
-				if (result == null) result = caseEventBCommentedElement(argument);
 				if (result == null) result = caseEventBNamed(argument);
-				if (result == null) result = caseEventBElement(argument);
-				if (result == null) result = caseEventBCommented(argument);
-				if (result == null) result = caseEventBObject(argument);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case TheoryextensionPackage.TYPE: {
 				Type type = (Type)theEObject;
 				T result = caseType(type);
-				if (result == null) result = caseEventBNamedCommentedElement(type);
-				if (result == null) result = caseEventBCommentedElement(type);
 				if (result == null) result = caseEventBNamed(type);
-				if (result == null) result = caseEventBElement(type);
-				if (result == null) result = caseEventBCommented(type);
 				if (result == null) result = caseEventBObject(type);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -156,35 +139,21 @@ public class TheoryextensionSwitch<T> {
 			case TheoryextensionPackage.CONSTRUCTOR: {
 				Constructor constructor = (Constructor)theEObject;
 				T result = caseConstructor(constructor);
-				if (result == null) result = caseEventBNamedCommentedElement(constructor);
-				if (result == null) result = caseEventBCommentedElement(constructor);
 				if (result == null) result = caseEventBNamed(constructor);
-				if (result == null) result = caseEventBElement(constructor);
-				if (result == null) result = caseEventBCommented(constructor);
-				if (result == null) result = caseEventBObject(constructor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case TheoryextensionPackage.DESTRUCTOR: {
 				Destructor destructor = (Destructor)theEObject;
 				T result = caseDestructor(destructor);
-				if (result == null) result = caseEventBNamedCommentedElement(destructor);
-				if (result == null) result = caseEventBCommentedElement(destructor);
 				if (result == null) result = caseEventBNamed(destructor);
-				if (result == null) result = caseEventBElement(destructor);
-				if (result == null) result = caseEventBCommented(destructor);
-				if (result == null) result = caseEventBObject(destructor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case TheoryextensionPackage.AXIOM: {
 				Axiom axiom = (Axiom)theEObject;
 				T result = caseAxiom(axiom);
-				if (result == null) result = caseEventBNamedCommentedElement(axiom);
-				if (result == null) result = caseEventBCommentedElement(axiom);
 				if (result == null) result = caseEventBNamed(axiom);
-				if (result == null) result = caseEventBElement(axiom);
-				if (result == null) result = caseEventBCommented(axiom);
 				if (result == null) result = caseEventBObject(axiom);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -192,11 +161,7 @@ public class TheoryextensionSwitch<T> {
 			case TheoryextensionPackage.THEOREM: {
 				Theorem theorem = (Theorem)theEObject;
 				T result = caseTheorem(theorem);
-				if (result == null) result = caseEventBNamedCommentedElement(theorem);
-				if (result == null) result = caseEventBCommentedElement(theorem);
 				if (result == null) result = caseEventBNamed(theorem);
-				if (result == null) result = caseEventBElement(theorem);
-				if (result == null) result = caseEventBCommented(theorem);
 				if (result == null) result = caseEventBObject(theorem);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -204,11 +169,6 @@ public class TheoryextensionSwitch<T> {
 			case TheoryextensionPackage.RULE_BLOCK: {
 				RuleBlock ruleBlock = (RuleBlock)theEObject;
 				T result = caseRuleBlock(ruleBlock);
-				if (result == null) result = caseEventBNamedCommentedElement(ruleBlock);
-				if (result == null) result = caseEventBCommentedElement(ruleBlock);
-				if (result == null) result = caseEventBNamed(ruleBlock);
-				if (result == null) result = caseEventBElement(ruleBlock);
-				if (result == null) result = caseEventBCommented(ruleBlock);
 				if (result == null) result = caseEventBObject(ruleBlock);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -216,6 +176,7 @@ public class TheoryextensionSwitch<T> {
 			case TheoryextensionPackage.RULE: {
 				Rule rule = (Rule)theEObject;
 				T result = caseRule(rule);
+				if (result == null) result = caseEventBNamed(rule);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -268,12 +229,7 @@ public class TheoryextensionSwitch<T> {
 			case TheoryextensionPackage.VARIABLE: {
 				Variable variable = (Variable)theEObject;
 				T result = caseVariable(variable);
-				if (result == null) result = caseEventBNamedCommentedElement(variable);
-				if (result == null) result = caseEventBCommentedElement(variable);
 				if (result == null) result = caseEventBNamed(variable);
-				if (result == null) result = caseEventBElement(variable);
-				if (result == null) result = caseEventBCommented(variable);
-				if (result == null) result = caseEventBObject(variable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -608,66 +564,6 @@ public class TheoryextensionSwitch<T> {
 	 * @generated
 	 */
 	public T caseEventBObject(EventBObject object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Event BElement</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Event BElement</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEventBElement(EventBElement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Event BCommented</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Event BCommented</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEventBCommented(EventBCommented object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Event BCommented Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Event BCommented Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEventBCommentedElement(EventBCommentedElement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Event BNamed Commented Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Event BNamed Commented Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEventBNamedCommentedElement(EventBNamedCommentedElement object) {
 		return null;
 	}
 

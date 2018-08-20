@@ -769,6 +769,14 @@ public class TheoryextensionItemProviderAdapterFactory extends TheoryextensionAd
 							 TheoryextensionFactory.eINSTANCE.createTheory()));
 
 				
+				annotation = TheoryextensionPackage.Literals.PARAMETER.getEAnnotation("org.eventb.emf.core.extendedMetaClasses");
+				if (annotation == null  || annotation.getReferences().contains(object.eClass()))
+					newChildDescriptors.add
+						(createChildParameter
+							(CorePackage.Literals.ANNOTATION__CONTENTS,
+							 TheoryextensionFactory.eINSTANCE.createParameter()));
+
+				
 				annotation = TheoryextensionPackage.Literals.OPERATOR.getEAnnotation("org.eventb.emf.core.extendedMetaClasses");
 				if (annotation == null  || annotation.getReferences().contains(object.eClass()))
 					newChildDescriptors.add
@@ -777,36 +785,12 @@ public class TheoryextensionItemProviderAdapterFactory extends TheoryextensionAd
 							 TheoryextensionFactory.eINSTANCE.createOperator()));
 
 				
-				annotation = TheoryextensionPackage.Literals.ARGUMENT.getEAnnotation("org.eventb.emf.core.extendedMetaClasses");
-				if (annotation == null  || annotation.getReferences().contains(object.eClass()))
-					newChildDescriptors.add
-						(createChildParameter
-							(CorePackage.Literals.ANNOTATION__CONTENTS,
-							 TheoryextensionFactory.eINSTANCE.createArgument()));
-
-				
 				annotation = TheoryextensionPackage.Literals.TYPE.getEAnnotation("org.eventb.emf.core.extendedMetaClasses");
 				if (annotation == null  || annotation.getReferences().contains(object.eClass()))
 					newChildDescriptors.add
 						(createChildParameter
 							(CorePackage.Literals.ANNOTATION__CONTENTS,
 							 TheoryextensionFactory.eINSTANCE.createType()));
-
-				
-				annotation = TheoryextensionPackage.Literals.CONSTRUCTOR.getEAnnotation("org.eventb.emf.core.extendedMetaClasses");
-				if (annotation == null  || annotation.getReferences().contains(object.eClass()))
-					newChildDescriptors.add
-						(createChildParameter
-							(CorePackage.Literals.ANNOTATION__CONTENTS,
-							 TheoryextensionFactory.eINSTANCE.createConstructor()));
-
-				
-				annotation = TheoryextensionPackage.Literals.DESTRUCTOR.getEAnnotation("org.eventb.emf.core.extendedMetaClasses");
-				if (annotation == null  || annotation.getReferences().contains(object.eClass()))
-					newChildDescriptors.add
-						(createChildParameter
-							(CorePackage.Literals.ANNOTATION__CONTENTS,
-							 TheoryextensionFactory.eINSTANCE.createDestructor()));
 
 				
 				annotation = TheoryextensionPackage.Literals.AXIOM.getEAnnotation("org.eventb.emf.core.extendedMetaClasses");
@@ -847,14 +831,6 @@ public class TheoryextensionItemProviderAdapterFactory extends TheoryextensionAd
 						(createChildParameter
 							(CorePackage.Literals.ANNOTATION__CONTENTS,
 							 TheoryextensionFactory.eINSTANCE.createConditionalRewriteRule()));
-
-				
-				annotation = TheoryextensionPackage.Literals.VARIABLE.getEAnnotation("org.eventb.emf.core.extendedMetaClasses");
-				if (annotation == null  || annotation.getReferences().contains(object.eClass()))
-					newChildDescriptors.add
-						(createChildParameter
-							(CorePackage.Literals.ANNOTATION__CONTENTS,
-							 TheoryextensionFactory.eINSTANCE.createVariable()));
 
 				return null;
 			}

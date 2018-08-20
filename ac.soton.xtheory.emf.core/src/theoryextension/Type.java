@@ -8,7 +8,8 @@ package theoryextension;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eventb.emf.core.EventBNamedCommentedElement;
+import org.eventb.emf.core.EventBNamed;
+import org.eventb.emf.core.EventBObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,7 +28,7 @@ import org.eventb.emf.core.EventBNamedCommentedElement;
  * @model
  * @generated
  */
-public interface Type extends EventBNamedCommentedElement {
+public interface Type extends EventBNamed, EventBObject {
 	/**
 	 * Returns the value of the '<em><b>Constructors</b></em>' containment reference list.
 	 * The list contents are of type {@link theoryextension.Constructor}.

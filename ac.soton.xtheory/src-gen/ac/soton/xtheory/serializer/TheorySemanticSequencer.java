@@ -121,10 +121,19 @@ public class TheorySemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     Argument returns Argument
 	 *
 	 * Constraint:
-	 *     ((comment=ML_COMMENT | comment=SL_COMMENT)? name=ID type=STRING)
+	 *     (name=ID type=STRING)
 	 */
 	protected void sequence_Argument(ISerializationContext context, Argument semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME));
+			if (transientValues.isValueTransient(semanticObject, TheoryextensionPackage.Literals.ARGUMENT__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TheoryextensionPackage.Literals.ARGUMENT__TYPE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getArgumentAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getArgumentAccess().getTypeSTRINGTerminalRuleCall_2_0(), semanticObject.getType());
+		feeder.finish();
 	}
 	
 	
@@ -133,10 +142,19 @@ public class TheorySemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     Axiom returns Axiom
 	 *
 	 * Constraint:
-	 *     ((comment=ML_COMMENT | comment=SL_COMMENT)? name=ID predicate=STRING)
+	 *     (name=ID predicate=STRING)
 	 */
 	protected void sequence_Axiom(ISerializationContext context, Axiom semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME));
+			if (transientValues.isValueTransient(semanticObject, TheoryextensionPackage.Literals.AXIOM__PREDICATE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TheoryextensionPackage.Literals.AXIOM__PREDICATE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAxiomAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getAxiomAccess().getPredicateSTRINGTerminalRuleCall_3_0(), semanticObject.getPredicate());
+		feeder.finish();
 	}
 	
 	
@@ -199,7 +217,7 @@ public class TheorySemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     Constructor returns Constructor
 	 *
 	 * Constraint:
-	 *     ((comment=ML_COMMENT | comment=SL_COMMENT)? name=ID (destructors+=Destructor destructors+=Destructor*)?)
+	 *     (name=ID (destructors+=Destructor destructors+=Destructor*)?)
 	 */
 	protected void sequence_Constructor(ISerializationContext context, Constructor semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -211,10 +229,19 @@ public class TheorySemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     Destructor returns Destructor
 	 *
 	 * Constraint:
-	 *     ((comment=ML_COMMENT | comment=SL_COMMENT)? name=ID type=STRING)
+	 *     (name=ID type=STRING)
 	 */
 	protected void sequence_Destructor(ISerializationContext context, Destructor semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME));
+			if (transientValues.isValueTransient(semanticObject, TheoryextensionPackage.Literals.DESTRUCTOR__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TheoryextensionPackage.Literals.DESTRUCTOR__TYPE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getDestructorAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getDestructorAccess().getTypeSTRINGTerminalRuleCall_2_0(), semanticObject.getType());
+		feeder.finish();
 	}
 	
 	
@@ -266,7 +293,6 @@ public class TheorySemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *
 	 * Constraint:
 	 *     (
-	 *         (comment=ML_COMMENT | comment=SL_COMMENT)? 
 	 *         name=ID 
 	 *         (arguments+=Argument arguments+=Argument*)? 
 	 *         ((type=STRING | notation=Notation)? (associative?='associative' commutative?='commutative'?)?)+ 
@@ -315,7 +341,7 @@ public class TheorySemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     RuleBlock returns RuleBlock
 	 *
 	 * Constraint:
-	 *     ((comment=ML_COMMENT | comment=SL_COMMENT)? name=ID variables+=Variable* rule=Rule)
+	 *     (variables+=Variable* rules+=Rule+)
 	 */
 	protected void sequence_RuleBlock(ISerializationContext context, RuleBlock semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -327,7 +353,7 @@ public class TheorySemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     Rule returns Rule
 	 *
 	 * Constraint:
-	 *     (rrule=RewriteRule | irule=InferenceRule)
+	 *     (name=ID (rrule=RewriteRule | irule=InferenceRule))
 	 */
 	protected void sequence_Rule(ISerializationContext context, Rule semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -339,10 +365,19 @@ public class TheorySemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     Theorem returns Theorem
 	 *
 	 * Constraint:
-	 *     ((comment=ML_COMMENT | comment=SL_COMMENT)? name=ID predicate=STRING)
+	 *     (name=ID predicate=STRING)
 	 */
 	protected void sequence_Theorem(ISerializationContext context, Theorem semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME));
+			if (transientValues.isValueTransient(semanticObject, TheoryextensionPackage.Literals.THEOREM__PREDICATE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TheoryextensionPackage.Literals.THEOREM__PREDICATE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getTheoremAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getTheoremAccess().getPredicateSTRINGTerminalRuleCall_3_0(), semanticObject.getPredicate());
+		feeder.finish();
 	}
 	
 	
@@ -355,7 +390,7 @@ public class TheorySemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *         name=ID 
 	 *         parameters+=Parameter* 
 	 *         (imports+=ID imports+=ID*)? 
-	 *         (internalElements+=Type | internalElements+=Operator | internalElements+=Axiom | internalElements+=Theorem | internalElements+=RuleBlock)*
+	 *         (internalElements+=Type | internalElements+=Operator | internalElements+=Axiom | internalElements+=Theorem | ruleBlocks+=RuleBlock)*
 	 *     )
 	 */
 	protected void sequence_Theory(ISerializationContext context, Theory semanticObject) {
@@ -368,7 +403,7 @@ public class TheorySemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     Type returns Type
 	 *
 	 * Constraint:
-	 *     ((comment=ML_COMMENT | comment=SL_COMMENT)? name=ID parameters+=[Parameter|ID]* constructors+=Constructor constructors+=Constructor*)
+	 *     (name=ID parameters+=[Parameter|ID]* constructors+=Constructor constructors+=Constructor*)
 	 */
 	protected void sequence_Type(ISerializationContext context, Type semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -392,10 +427,19 @@ public class TheorySemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     Variable returns Variable
 	 *
 	 * Constraint:
-	 *     ((comment=ML_COMMENT | comment=SL_COMMENT)? name=ID type=STRING)
+	 *     (name=ID type=STRING)
 	 */
 	protected void sequence_Variable(ISerializationContext context, Variable semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME));
+			if (transientValues.isValueTransient(semanticObject, TheoryextensionPackage.Literals.VARIABLE__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TheoryextensionPackage.Literals.VARIABLE__TYPE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getVariableAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getVariableAccess().getTypeSTRINGTerminalRuleCall_2_0(), semanticObject.getType());
+		feeder.finish();
 	}
 	
 	

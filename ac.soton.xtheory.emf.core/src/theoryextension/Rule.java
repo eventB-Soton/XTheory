@@ -6,7 +6,7 @@
  */
 package theoryextension;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eventb.emf.core.EventBNamed;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Rule extends EObject {
+public interface Rule extends EventBNamed {
 	/**
 	 * Returns the value of the '<em><b>Rrule</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

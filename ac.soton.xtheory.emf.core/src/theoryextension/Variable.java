@@ -6,7 +6,7 @@
  */
 package theoryextension;
 
-import org.eventb.emf.core.EventBNamedCommentedElement;
+import org.eventb.emf.core.EventBNamed;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,7 +24,7 @@ import org.eventb.emf.core.EventBNamedCommentedElement;
  * @model
  * @generated
  */
-public interface Variable extends EventBNamedCommentedElement {
+public interface Variable extends EventBNamed {
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->

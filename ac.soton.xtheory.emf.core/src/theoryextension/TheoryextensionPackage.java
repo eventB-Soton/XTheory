@@ -109,58 +109,13 @@ public interface TheoryextensionPackage extends EPackage {
 	int THEORY__PARAMETERS = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Operators</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Rule Blocks</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int THEORY__OPERATORS = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Types</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int THEORY__TYPES = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Axioms</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int THEORY__AXIOMS = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>Theorems</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int THEORY__THEOREMS = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 6;
-
-	/**
-	 * The feature id for the '<em><b>Rules</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int THEORY__RULES = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 7;
-
-	/**
-	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int THEORY__VARIABLES = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 8;
+	int THEORY__RULE_BLOCKS = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Internal Elements</b></em>' containment reference list.
@@ -169,7 +124,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int THEORY__INTERNAL_ELEMENTS = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 9;
+	int THEORY__INTERNAL_ELEMENTS = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Theory</em>' class.
@@ -178,7 +133,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int THEORY_FEATURE_COUNT = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 10;
+	int THEORY_FEATURE_COUNT = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link theoryextension.impl.ParameterImpl <em>Parameter</em>}' class.
@@ -200,13 +155,22 @@ public interface TheoryextensionPackage extends EPackage {
 	int PARAMETER__NAME = CorePackage.EVENT_BNAMED__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__ANNOTATIONS = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Parameter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_FEATURE_COUNT = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 0;
+	int PARAMETER_FEATURE_COUNT = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link theoryextension.impl.OperatorImpl <em>Operator</em>}' class.
@@ -219,85 +183,22 @@ public interface TheoryextensionPackage extends EPackage {
 	int OPERATOR = 2;
 
 	/**
-	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATOR__ANNOTATIONS = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__ANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Extensions</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATOR__EXTENSIONS = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__EXTENSIONS;
-
-	/**
-	 * The feature id for the '<em><b>Attributes</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATOR__ATTRIBUTES = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__ATTRIBUTES;
-
-	/**
-	 * The feature id for the '<em><b>Reference</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATOR__REFERENCE = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__REFERENCE;
-
-	/**
-	 * The feature id for the '<em><b>Generated</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATOR__GENERATED = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__GENERATED;
-
-	/**
-	 * The feature id for the '<em><b>Local Generated</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATOR__LOCAL_GENERATED = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__LOCAL_GENERATED;
-
-	/**
-	 * The feature id for the '<em><b>Internal Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATOR__INTERNAL_ID = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__INTERNAL_ID;
-
-	/**
-	 * The feature id for the '<em><b>Comment</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATOR__COMMENT = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__COMMENT;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR__NAME = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__NAME;
+	int OPERATOR__NAME = CorePackage.EVENT_BNAMED__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATOR__ANNOTATIONS = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -306,7 +207,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR__TYPE = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 0;
+	int OPERATOR__TYPE = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Notation</b></em>' attribute.
@@ -315,7 +216,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR__NOTATION = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 1;
+	int OPERATOR__NOTATION = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Associative</b></em>' attribute.
@@ -324,7 +225,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR__ASSOCIATIVE = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 2;
+	int OPERATOR__ASSOCIATIVE = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Commutative</b></em>' attribute.
@@ -333,7 +234,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR__COMMUTATIVE = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 3;
+	int OPERATOR__COMMUTATIVE = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Arguments</b></em>' containment reference list.
@@ -342,7 +243,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR__ARGUMENTS = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 4;
+	int OPERATOR__ARGUMENTS = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Precedent</b></em>' attribute.
@@ -351,7 +252,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR__PRECEDENT = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 5;
+	int OPERATOR__PRECEDENT = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Wd</b></em>' attribute.
@@ -360,7 +261,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR__WD = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 6;
+	int OPERATOR__WD = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Definition</b></em>' attribute.
@@ -369,7 +270,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR__DEFINITION = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 7;
+	int OPERATOR__DEFINITION = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Case</b></em>' attribute.
@@ -378,7 +279,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR__CASE = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 8;
+	int OPERATOR__CASE = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Cases</b></em>' containment reference list.
@@ -387,7 +288,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR__CASES = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 9;
+	int OPERATOR__CASES = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 10;
 
 	/**
 	 * The number of structural features of the '<em>Operator</em>' class.
@@ -396,7 +297,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR_FEATURE_COUNT = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 10;
+	int OPERATOR_FEATURE_COUNT = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 11;
 
 	/**
 	 * The meta object id for the '{@link theoryextension.impl.CaseImpl <em>Case</em>}' class.
@@ -455,85 +356,13 @@ public interface TheoryextensionPackage extends EPackage {
 	int ARGUMENT = 4;
 
 	/**
-	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARGUMENT__ANNOTATIONS = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__ANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Extensions</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARGUMENT__EXTENSIONS = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__EXTENSIONS;
-
-	/**
-	 * The feature id for the '<em><b>Attributes</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARGUMENT__ATTRIBUTES = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__ATTRIBUTES;
-
-	/**
-	 * The feature id for the '<em><b>Reference</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARGUMENT__REFERENCE = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__REFERENCE;
-
-	/**
-	 * The feature id for the '<em><b>Generated</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARGUMENT__GENERATED = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__GENERATED;
-
-	/**
-	 * The feature id for the '<em><b>Local Generated</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARGUMENT__LOCAL_GENERATED = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__LOCAL_GENERATED;
-
-	/**
-	 * The feature id for the '<em><b>Internal Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARGUMENT__INTERNAL_ID = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__INTERNAL_ID;
-
-	/**
-	 * The feature id for the '<em><b>Comment</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARGUMENT__COMMENT = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__COMMENT;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ARGUMENT__NAME = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__NAME;
+	int ARGUMENT__NAME = CorePackage.EVENT_BNAMED__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -542,7 +371,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ARGUMENT__TYPE = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 0;
+	int ARGUMENT__TYPE = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Argument</em>' class.
@@ -551,7 +380,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ARGUMENT_FEATURE_COUNT = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 1;
+	int ARGUMENT_FEATURE_COUNT = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link theoryextension.impl.TypeImpl <em>Type</em>}' class.
@@ -564,85 +393,22 @@ public interface TheoryextensionPackage extends EPackage {
 	int TYPE = 5;
 
 	/**
-	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE__ANNOTATIONS = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__ANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Extensions</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE__EXTENSIONS = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__EXTENSIONS;
-
-	/**
-	 * The feature id for the '<em><b>Attributes</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE__ATTRIBUTES = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__ATTRIBUTES;
-
-	/**
-	 * The feature id for the '<em><b>Reference</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE__REFERENCE = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__REFERENCE;
-
-	/**
-	 * The feature id for the '<em><b>Generated</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE__GENERATED = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__GENERATED;
-
-	/**
-	 * The feature id for the '<em><b>Local Generated</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE__LOCAL_GENERATED = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__LOCAL_GENERATED;
-
-	/**
-	 * The feature id for the '<em><b>Internal Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE__INTERNAL_ID = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__INTERNAL_ID;
-
-	/**
-	 * The feature id for the '<em><b>Comment</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE__COMMENT = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__COMMENT;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE__NAME = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__NAME;
+	int TYPE__NAME = CorePackage.EVENT_BNAMED__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE__ANNOTATIONS = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Constructors</b></em>' containment reference list.
@@ -651,7 +417,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE__CONSTRUCTORS = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 0;
+	int TYPE__CONSTRUCTORS = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Parameters</b></em>' reference list.
@@ -660,7 +426,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE__PARAMETERS = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 1;
+	int TYPE__PARAMETERS = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Type</em>' class.
@@ -669,7 +435,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_FEATURE_COUNT = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 2;
+	int TYPE_FEATURE_COUNT = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link theoryextension.impl.ConstructorImpl <em>Constructor</em>}' class.
@@ -682,85 +448,13 @@ public interface TheoryextensionPackage extends EPackage {
 	int CONSTRUCTOR = 6;
 
 	/**
-	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRUCTOR__ANNOTATIONS = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__ANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Extensions</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRUCTOR__EXTENSIONS = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__EXTENSIONS;
-
-	/**
-	 * The feature id for the '<em><b>Attributes</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRUCTOR__ATTRIBUTES = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__ATTRIBUTES;
-
-	/**
-	 * The feature id for the '<em><b>Reference</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRUCTOR__REFERENCE = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__REFERENCE;
-
-	/**
-	 * The feature id for the '<em><b>Generated</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRUCTOR__GENERATED = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__GENERATED;
-
-	/**
-	 * The feature id for the '<em><b>Local Generated</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRUCTOR__LOCAL_GENERATED = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__LOCAL_GENERATED;
-
-	/**
-	 * The feature id for the '<em><b>Internal Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRUCTOR__INTERNAL_ID = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__INTERNAL_ID;
-
-	/**
-	 * The feature id for the '<em><b>Comment</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRUCTOR__COMMENT = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__COMMENT;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRUCTOR__NAME = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__NAME;
+	int CONSTRUCTOR__NAME = CorePackage.EVENT_BNAMED__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Destructors</b></em>' containment reference list.
@@ -769,7 +463,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRUCTOR__DESTRUCTORS = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 0;
+	int CONSTRUCTOR__DESTRUCTORS = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Constructor</em>' class.
@@ -778,7 +472,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRUCTOR_FEATURE_COUNT = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 1;
+	int CONSTRUCTOR_FEATURE_COUNT = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link theoryextension.impl.DestructorImpl <em>Destructor</em>}' class.
@@ -791,85 +485,13 @@ public interface TheoryextensionPackage extends EPackage {
 	int DESTRUCTOR = 7;
 
 	/**
-	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DESTRUCTOR__ANNOTATIONS = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__ANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Extensions</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DESTRUCTOR__EXTENSIONS = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__EXTENSIONS;
-
-	/**
-	 * The feature id for the '<em><b>Attributes</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DESTRUCTOR__ATTRIBUTES = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__ATTRIBUTES;
-
-	/**
-	 * The feature id for the '<em><b>Reference</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DESTRUCTOR__REFERENCE = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__REFERENCE;
-
-	/**
-	 * The feature id for the '<em><b>Generated</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DESTRUCTOR__GENERATED = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__GENERATED;
-
-	/**
-	 * The feature id for the '<em><b>Local Generated</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DESTRUCTOR__LOCAL_GENERATED = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__LOCAL_GENERATED;
-
-	/**
-	 * The feature id for the '<em><b>Internal Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DESTRUCTOR__INTERNAL_ID = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__INTERNAL_ID;
-
-	/**
-	 * The feature id for the '<em><b>Comment</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DESTRUCTOR__COMMENT = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__COMMENT;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DESTRUCTOR__NAME = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__NAME;
+	int DESTRUCTOR__NAME = CorePackage.EVENT_BNAMED__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -878,7 +500,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DESTRUCTOR__TYPE = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 0;
+	int DESTRUCTOR__TYPE = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Destructor</em>' class.
@@ -887,7 +509,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DESTRUCTOR_FEATURE_COUNT = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 1;
+	int DESTRUCTOR_FEATURE_COUNT = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link theoryextension.impl.AxiomImpl <em>Axiom</em>}' class.
@@ -900,85 +522,22 @@ public interface TheoryextensionPackage extends EPackage {
 	int AXIOM = 8;
 
 	/**
-	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AXIOM__ANNOTATIONS = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__ANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Extensions</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AXIOM__EXTENSIONS = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__EXTENSIONS;
-
-	/**
-	 * The feature id for the '<em><b>Attributes</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AXIOM__ATTRIBUTES = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__ATTRIBUTES;
-
-	/**
-	 * The feature id for the '<em><b>Reference</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AXIOM__REFERENCE = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__REFERENCE;
-
-	/**
-	 * The feature id for the '<em><b>Generated</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AXIOM__GENERATED = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__GENERATED;
-
-	/**
-	 * The feature id for the '<em><b>Local Generated</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AXIOM__LOCAL_GENERATED = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__LOCAL_GENERATED;
-
-	/**
-	 * The feature id for the '<em><b>Internal Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AXIOM__INTERNAL_ID = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__INTERNAL_ID;
-
-	/**
-	 * The feature id for the '<em><b>Comment</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AXIOM__COMMENT = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__COMMENT;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AXIOM__NAME = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__NAME;
+	int AXIOM__NAME = CorePackage.EVENT_BNAMED__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AXIOM__ANNOTATIONS = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Predicate</b></em>' attribute.
@@ -987,7 +546,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AXIOM__PREDICATE = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 0;
+	int AXIOM__PREDICATE = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Axiom</em>' class.
@@ -996,7 +555,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AXIOM_FEATURE_COUNT = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 1;
+	int AXIOM_FEATURE_COUNT = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link theoryextension.impl.TheoremImpl <em>Theorem</em>}' class.
@@ -1009,85 +568,22 @@ public interface TheoryextensionPackage extends EPackage {
 	int THEOREM = 9;
 
 	/**
-	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int THEOREM__ANNOTATIONS = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__ANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Extensions</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int THEOREM__EXTENSIONS = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__EXTENSIONS;
-
-	/**
-	 * The feature id for the '<em><b>Attributes</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int THEOREM__ATTRIBUTES = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__ATTRIBUTES;
-
-	/**
-	 * The feature id for the '<em><b>Reference</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int THEOREM__REFERENCE = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__REFERENCE;
-
-	/**
-	 * The feature id for the '<em><b>Generated</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int THEOREM__GENERATED = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__GENERATED;
-
-	/**
-	 * The feature id for the '<em><b>Local Generated</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int THEOREM__LOCAL_GENERATED = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__LOCAL_GENERATED;
-
-	/**
-	 * The feature id for the '<em><b>Internal Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int THEOREM__INTERNAL_ID = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__INTERNAL_ID;
-
-	/**
-	 * The feature id for the '<em><b>Comment</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int THEOREM__COMMENT = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__COMMENT;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int THEOREM__NAME = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__NAME;
+	int THEOREM__NAME = CorePackage.EVENT_BNAMED__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THEOREM__ANNOTATIONS = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Predicate</b></em>' attribute.
@@ -1096,7 +592,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int THEOREM__PREDICATE = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 0;
+	int THEOREM__PREDICATE = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Theorem</em>' class.
@@ -1105,7 +601,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int THEOREM_FEATURE_COUNT = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 1;
+	int THEOREM_FEATURE_COUNT = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link theoryextension.impl.RuleBlockImpl <em>Rule Block</em>}' class.
@@ -1124,88 +620,16 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RULE_BLOCK__ANNOTATIONS = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__ANNOTATIONS;
+	int RULE_BLOCK__ANNOTATIONS = CorePackage.EVENT_BOBJECT__ANNOTATIONS;
 
 	/**
-	 * The feature id for the '<em><b>Extensions</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Rules</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RULE_BLOCK__EXTENSIONS = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__EXTENSIONS;
-
-	/**
-	 * The feature id for the '<em><b>Attributes</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RULE_BLOCK__ATTRIBUTES = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__ATTRIBUTES;
-
-	/**
-	 * The feature id for the '<em><b>Reference</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RULE_BLOCK__REFERENCE = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__REFERENCE;
-
-	/**
-	 * The feature id for the '<em><b>Generated</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RULE_BLOCK__GENERATED = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__GENERATED;
-
-	/**
-	 * The feature id for the '<em><b>Local Generated</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RULE_BLOCK__LOCAL_GENERATED = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__LOCAL_GENERATED;
-
-	/**
-	 * The feature id for the '<em><b>Internal Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RULE_BLOCK__INTERNAL_ID = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__INTERNAL_ID;
-
-	/**
-	 * The feature id for the '<em><b>Comment</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RULE_BLOCK__COMMENT = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RULE_BLOCK__NAME = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Rule</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RULE_BLOCK__RULE = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 0;
+	int RULE_BLOCK__RULES = CorePackage.EVENT_BOBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
@@ -1214,7 +638,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RULE_BLOCK__VARIABLES = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 1;
+	int RULE_BLOCK__VARIABLES = CorePackage.EVENT_BOBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Rule Block</em>' class.
@@ -1223,7 +647,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RULE_BLOCK_FEATURE_COUNT = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 2;
+	int RULE_BLOCK_FEATURE_COUNT = CorePackage.EVENT_BOBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link theoryextension.impl.RuleImpl <em>Rule</em>}' class.
@@ -1236,13 +660,22 @@ public interface TheoryextensionPackage extends EPackage {
 	int RULE = 11;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RULE__NAME = CorePackage.EVENT_BNAMED__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Rrule</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RULE__RRULE = 0;
+	int RULE__RRULE = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Irule</b></em>' containment reference.
@@ -1251,7 +684,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RULE__IRULE = 1;
+	int RULE__IRULE = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Rule</em>' class.
@@ -1260,7 +693,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RULE_FEATURE_COUNT = 2;
+	int RULE_FEATURE_COUNT = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link theoryextension.impl.RewriteRuleImpl <em>Rewrite Rule</em>}' class.
@@ -1577,85 +1010,13 @@ public interface TheoryextensionPackage extends EPackage {
 	int VARIABLE = 19;
 
 	/**
-	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE__ANNOTATIONS = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__ANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Extensions</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE__EXTENSIONS = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__EXTENSIONS;
-
-	/**
-	 * The feature id for the '<em><b>Attributes</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE__ATTRIBUTES = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__ATTRIBUTES;
-
-	/**
-	 * The feature id for the '<em><b>Reference</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE__REFERENCE = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__REFERENCE;
-
-	/**
-	 * The feature id for the '<em><b>Generated</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE__GENERATED = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__GENERATED;
-
-	/**
-	 * The feature id for the '<em><b>Local Generated</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE__LOCAL_GENERATED = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__LOCAL_GENERATED;
-
-	/**
-	 * The feature id for the '<em><b>Internal Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE__INTERNAL_ID = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__INTERNAL_ID;
-
-	/**
-	 * The feature id for the '<em><b>Comment</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE__COMMENT = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__COMMENT;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE__NAME = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__NAME;
+	int VARIABLE__NAME = CorePackage.EVENT_BNAMED__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1664,7 +1025,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE__TYPE = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 0;
+	int VARIABLE__TYPE = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Variable</em>' class.
@@ -1673,7 +1034,7 @@ public interface TheoryextensionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_FEATURE_COUNT = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 1;
+	int VARIABLE_FEATURE_COUNT = CorePackage.EVENT_BNAMED_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link theoryextension.Notation <em>Notation</em>}' enum.
@@ -1719,70 +1080,15 @@ public interface TheoryextensionPackage extends EPackage {
 	EReference getTheory_Parameters();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link theoryextension.Theory#getOperators <em>Operators</em>}'.
+	 * Returns the meta object for the containment reference list '{@link theoryextension.Theory#getRuleBlocks <em>Rule Blocks</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Operators</em>'.
-	 * @see theoryextension.Theory#getOperators()
+	 * @return the meta object for the containment reference list '<em>Rule Blocks</em>'.
+	 * @see theoryextension.Theory#getRuleBlocks()
 	 * @see #getTheory()
 	 * @generated
 	 */
-	EReference getTheory_Operators();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link theoryextension.Theory#getTypes <em>Types</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Types</em>'.
-	 * @see theoryextension.Theory#getTypes()
-	 * @see #getTheory()
-	 * @generated
-	 */
-	EReference getTheory_Types();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link theoryextension.Theory#getAxioms <em>Axioms</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Axioms</em>'.
-	 * @see theoryextension.Theory#getAxioms()
-	 * @see #getTheory()
-	 * @generated
-	 */
-	EReference getTheory_Axioms();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link theoryextension.Theory#getTheorems <em>Theorems</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Theorems</em>'.
-	 * @see theoryextension.Theory#getTheorems()
-	 * @see #getTheory()
-	 * @generated
-	 */
-	EReference getTheory_Theorems();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link theoryextension.Theory#getRules <em>Rules</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Rules</em>'.
-	 * @see theoryextension.Theory#getRules()
-	 * @see #getTheory()
-	 * @generated
-	 */
-	EReference getTheory_Rules();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link theoryextension.Theory#getVariables <em>Variables</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Variables</em>'.
-	 * @see theoryextension.Theory#getVariables()
-	 * @see #getTheory()
-	 * @generated
-	 */
-	EReference getTheory_Variables();
+	EReference getTheory_RuleBlocks();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link theoryextension.Theory#getInternalElements <em>Internal Elements</em>}'.
@@ -2105,15 +1411,15 @@ public interface TheoryextensionPackage extends EPackage {
 	EClass getRuleBlock();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link theoryextension.RuleBlock#getRule <em>Rule</em>}'.
+	 * Returns the meta object for the containment reference list '{@link theoryextension.RuleBlock#getRules <em>Rules</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Rule</em>'.
-	 * @see theoryextension.RuleBlock#getRule()
+	 * @return the meta object for the containment reference list '<em>Rules</em>'.
+	 * @see theoryextension.RuleBlock#getRules()
 	 * @see #getRuleBlock()
 	 * @generated
 	 */
-	EReference getRuleBlock_Rule();
+	EReference getRuleBlock_Rules();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link theoryextension.RuleBlock#getVariables <em>Variables</em>}'.
@@ -2473,52 +1779,12 @@ public interface TheoryextensionPackage extends EPackage {
 		EReference THEORY__PARAMETERS = eINSTANCE.getTheory_Parameters();
 
 		/**
-		 * The meta object literal for the '<em><b>Operators</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Rule Blocks</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference THEORY__OPERATORS = eINSTANCE.getTheory_Operators();
-
-		/**
-		 * The meta object literal for the '<em><b>Types</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference THEORY__TYPES = eINSTANCE.getTheory_Types();
-
-		/**
-		 * The meta object literal for the '<em><b>Axioms</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference THEORY__AXIOMS = eINSTANCE.getTheory_Axioms();
-
-		/**
-		 * The meta object literal for the '<em><b>Theorems</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference THEORY__THEOREMS = eINSTANCE.getTheory_Theorems();
-
-		/**
-		 * The meta object literal for the '<em><b>Rules</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference THEORY__RULES = eINSTANCE.getTheory_Rules();
-
-		/**
-		 * The meta object literal for the '<em><b>Variables</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference THEORY__VARIABLES = eINSTANCE.getTheory_Variables();
+		EReference THEORY__RULE_BLOCKS = eINSTANCE.getTheory_RuleBlocks();
 
 		/**
 		 * The meta object literal for the '<em><b>Internal Elements</b></em>' containment reference list feature.
@@ -2781,12 +2047,12 @@ public interface TheoryextensionPackage extends EPackage {
 		EClass RULE_BLOCK = eINSTANCE.getRuleBlock();
 
 		/**
-		 * The meta object literal for the '<em><b>Rule</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Rules</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference RULE_BLOCK__RULE = eINSTANCE.getRuleBlock_Rule();
+		EReference RULE_BLOCK__RULES = eINSTANCE.getRuleBlock_Rules();
 
 		/**
 		 * The meta object literal for the '<em><b>Variables</b></em>' containment reference list feature.

@@ -10,19 +10,24 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
-
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.eventb.emf.core.impl.EventBNamedCommentedElementImpl;
-
+import org.eventb.emf.core.Annotation;
+import org.eventb.emf.core.CorePackage;
+import org.eventb.emf.core.EventBObject;
+import org.eventb.emf.core.impl.EventBNamedImpl;
 import theoryextension.Argument;
 import theoryextension.Case;
 import theoryextension.Notation;
@@ -36,6 +41,7 @@ import theoryextension.TheoryextensionPackage;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link theoryextension.impl.OperatorImpl#getAnnotations <em>Annotations</em>}</li>
  *   <li>{@link theoryextension.impl.OperatorImpl#getType <em>Type</em>}</li>
  *   <li>{@link theoryextension.impl.OperatorImpl#getNotation <em>Notation</em>}</li>
  *   <li>{@link theoryextension.impl.OperatorImpl#isAssociative <em>Associative</em>}</li>
@@ -51,7 +57,17 @@ import theoryextension.TheoryextensionPackage;
  *
  * @generated
  */
-public class OperatorImpl extends EventBNamedCommentedElementImpl implements Operator {
+public class OperatorImpl extends EventBNamedImpl implements Operator {
+	/**
+	 * The cached value of the '{@link #getAnnotations() <em>Annotations</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAnnotations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Annotation> annotations;
+
 	/**
 	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -256,6 +272,18 @@ public class OperatorImpl extends EventBNamedCommentedElementImpl implements Ope
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Annotation> getAnnotations() {
+		if (annotations == null) {
+			annotations = new EObjectContainmentWithInverseEList<Annotation>(Annotation.class, this, TheoryextensionPackage.OPERATOR__ANNOTATIONS, CorePackage.ANNOTATION__EVENT_BOBJECT);
+		}
+		return annotations;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getType() {
 		return type;
 	}
@@ -448,9 +476,66 @@ public class OperatorImpl extends EventBNamedCommentedElementImpl implements Ope
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EventBObject getContaining(EClass eClass) {
+		EventBObject bObject = this;
+		while (!eClass.isSuperTypeOf(bObject.eClass()))
+			if (bObject.eContainer() instanceof EventBObject) bObject=(EventBObject)bObject.eContainer();
+			else return null;
+		return bObject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<EObject> getAllContained(EClass eClass, boolean resolve) {
+		EList<EObject> typeObjects = new BasicEList<EObject>();
+		typeObjects.add(null);	//include the null object
+		for (TreeIterator<EObject>trit = EcoreUtil.getAllContents(this, resolve); trit.hasNext();){
+			EObject o = trit.next();
+			if (eClass.isSuperTypeOf(o.eClass())) typeObjects.add(o);
+		}
+		return typeObjects;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Annotation getAnnotation(String source) {
+		for (Annotation annotation : getAnnotations()){
+			if (source.equals(annotation.getSource())) return annotation;
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case TheoryextensionPackage.OPERATOR__ANNOTATIONS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getAnnotations()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case TheoryextensionPackage.OPERATOR__ANNOTATIONS:
+				return ((InternalEList<?>)getAnnotations()).basicRemove(otherEnd, msgs);
 			case TheoryextensionPackage.OPERATOR__ARGUMENTS:
 				return ((InternalEList<?>)getArguments()).basicRemove(otherEnd, msgs);
 			case TheoryextensionPackage.OPERATOR__CASES:
@@ -467,6 +552,8 @@ public class OperatorImpl extends EventBNamedCommentedElementImpl implements Ope
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case TheoryextensionPackage.OPERATOR__ANNOTATIONS:
+				return getAnnotations();
 			case TheoryextensionPackage.OPERATOR__TYPE:
 				return getType();
 			case TheoryextensionPackage.OPERATOR__NOTATION:
@@ -500,6 +587,10 @@ public class OperatorImpl extends EventBNamedCommentedElementImpl implements Ope
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case TheoryextensionPackage.OPERATOR__ANNOTATIONS:
+				getAnnotations().clear();
+				getAnnotations().addAll((Collection<? extends Annotation>)newValue);
+				return;
 			case TheoryextensionPackage.OPERATOR__TYPE:
 				setType((String)newValue);
 				return;
@@ -544,6 +635,9 @@ public class OperatorImpl extends EventBNamedCommentedElementImpl implements Ope
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case TheoryextensionPackage.OPERATOR__ANNOTATIONS:
+				getAnnotations().clear();
+				return;
 			case TheoryextensionPackage.OPERATOR__TYPE:
 				setType(TYPE_EDEFAULT);
 				return;
@@ -586,6 +680,8 @@ public class OperatorImpl extends EventBNamedCommentedElementImpl implements Ope
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case TheoryextensionPackage.OPERATOR__ANNOTATIONS:
+				return annotations != null && !annotations.isEmpty();
 			case TheoryextensionPackage.OPERATOR__TYPE:
 				return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
 			case TheoryextensionPackage.OPERATOR__NOTATION:
@@ -608,6 +704,48 @@ public class OperatorImpl extends EventBNamedCommentedElementImpl implements Ope
 				return cases != null && !cases.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == EObject.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == EventBObject.class) {
+			switch (derivedFeatureID) {
+				case TheoryextensionPackage.OPERATOR__ANNOTATIONS: return CorePackage.EVENT_BOBJECT__ANNOTATIONS;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == EObject.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == EventBObject.class) {
+			switch (baseFeatureID) {
+				case CorePackage.EVENT_BOBJECT__ANNOTATIONS: return TheoryextensionPackage.OPERATOR__ANNOTATIONS;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**

@@ -6,7 +6,8 @@
  */
 package theoryextension;
 
-import org.eventb.emf.core.EventBNamedCommentedElement;
+import org.eventb.emf.core.EventBNamed;
+import org.eventb.emf.core.EventBObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,7 +25,7 @@ import org.eventb.emf.core.EventBNamedCommentedElement;
  * @model
  * @generated
  */
-public interface Axiom extends EventBNamedCommentedElement {
+public interface Axiom extends EventBNamed, EventBObject {
 	/**
 	 * Returns the value of the '<em><b>Predicate</b></em>' attribute.
 	 * <!-- begin-user-doc -->

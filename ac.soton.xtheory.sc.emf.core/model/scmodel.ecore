@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="scmodel" nsURI="http://soton.ac.uk/models/eventb/theoryextension/2018/sc"
+    nsPrefix="scmodel">
+  <eClassifiers xsi:type="ecore:EClass" name="SCTheory" eSuperTypes="#//Named">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="#//SCParameter"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="internalObjects" upperBound="-1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ruleblocks" upperBound="-1"
+        eType="#//SCRuleblock"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SCParameter" eSuperTypes="#//Named #//MLAndTypeEnv"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SCOperator" eSuperTypes="#//Named #//MLAndTypeEnv">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="notation" eType="#//Notation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="associative" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="commutative" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arguments" upperBound="-1"
+        eType="#//SCArgument"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="precedent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="wd" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="definition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="case" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cases" upperBound="-1"
+        eType="#//SCCase"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Notation">
+    <eLiterals name="Prefix" literal="Prefix"/>
+    <eLiterals name="Infix" value="1"/>
+    <eLiterals name="Postfix" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SCCase">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pattern" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="formula" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SCArgument" eSuperTypes="#//Named">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SCType" eSuperTypes="#//Named #//MLAndTypeEnv">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constructors" lowerBound="1"
+        upperBound="-1" eType="#//SCConstructor"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="#//SCParameter"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SCConstructor" eSuperTypes="#//Named">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="destructors" upperBound="-1"
+        eType="#//SCDestructor"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SCDestructor" eSuperTypes="#//Named">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SCAxiom" eSuperTypes="#//Named">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="predicate" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SCTheorem" eSuperTypes="#//Named">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="predicate" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SCRuleblock">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rules" lowerBound="1" upperBound="-1"
+        eType="#//SCRule"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
+        eType="#//SCVariable"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SCVariable" eSuperTypes="#//Named">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SCRule" eSuperTypes="#//Named">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rrule" eType="#//SCRewriteRule"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="irule" eType="#//SCInferenceRule"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SCRewriteRule">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pattern" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="urule" eType="#//SCUnconditionalRewrite"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="crule" eType="#//SCConditionalRewrite"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SCUnconditionalRewrite">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rhs" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SCConditionalRewrite">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rewrites" upperBound="-1"
+        eType="#//SCConditionalRewriteRule"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SCConditionalRewriteRule">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lhs" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rhs" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SCInferenceRule">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="given" upperBound="-1"
+        eType="#//SCGiven"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="infer" lowerBound="1" eType="#//SCInfer"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SCGiven">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="required" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="expression" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SCInfer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="expression" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ML"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TypeEnvironment"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Named" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MLAndTypeEnv" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="typeEnvironment" eType="#//TypeEnvironment"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ML" eType="#//ML"/>
+  </eClassifiers>
+</ecore:EPackage>

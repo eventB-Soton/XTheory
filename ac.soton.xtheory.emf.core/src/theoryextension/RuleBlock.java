@@ -7,8 +7,7 @@
 package theoryextension;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.eventb.emf.core.EventBNamedCommentedElement;
+import org.eventb.emf.core.EventBObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,7 +17,7 @@ import org.eventb.emf.core.EventBNamedCommentedElement;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link theoryextension.RuleBlock#getRule <em>Rule</em>}</li>
+ *   <li>{@link theoryextension.RuleBlock#getRules <em>Rules</em>}</li>
  *   <li>{@link theoryextension.RuleBlock#getVariables <em>Variables</em>}</li>
  * </ul>
  * </p>
@@ -27,32 +26,22 @@ import org.eventb.emf.core.EventBNamedCommentedElement;
  * @model
  * @generated
  */
-public interface RuleBlock extends EventBNamedCommentedElement {
+public interface RuleBlock extends EventBObject {
 	/**
-	 * Returns the value of the '<em><b>Rule</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Rules</b></em>' containment reference list.
+	 * The list contents are of type {@link theoryextension.Rule}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Rule</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Rules</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Rule</em>' containment reference.
-	 * @see #setRule(Rule)
-	 * @see theoryextension.TheoryextensionPackage#getRuleBlock_Rule()
+	 * @return the value of the '<em>Rules</em>' containment reference list.
+	 * @see theoryextension.TheoryextensionPackage#getRuleBlock_Rules()
 	 * @model containment="true" resolveProxies="true" required="true"
 	 * @generated
 	 */
-	Rule getRule();
-
-	/**
-	 * Sets the value of the '{@link theoryextension.RuleBlock#getRule <em>Rule</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Rule</em>' containment reference.
-	 * @see #getRule()
-	 * @generated
-	 */
-	void setRule(Rule value);
+	EList<Rule> getRules();
 
 	/**
 	 * Returns the value of the '<em><b>Variables</b></em>' containment reference list.

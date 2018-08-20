@@ -8,7 +8,8 @@ package theoryextension;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eventb.emf.core.EventBNamedCommentedElement;
+import org.eventb.emf.core.EventBNamed;
+import org.eventb.emf.core.EventBObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,7 +36,7 @@ import org.eventb.emf.core.EventBNamedCommentedElement;
  * @model
  * @generated
  */
-public interface Operator extends EventBNamedCommentedElement {
+public interface Operator extends EventBNamed, EventBObject {
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
